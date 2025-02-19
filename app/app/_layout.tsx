@@ -1,39 +1,46 @@
-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';
-import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
-import * as SplashScreen from 'expo-splash-screen';
-import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
-import 'react-native-reanimated';
+import { Colors } from "@/constants/Colors";
+import i18nextConfig from "@/constants/Traduction/i18";
+import { useColorScheme } from "@/hooks/useColorScheme";
+import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
+import * as Localization from "expo-localization";
+import { Stack } from "expo-router";
+import { useTranslation } from "react-i18next";
+import { StyleSheet } from "react-native";
+import "react-native-reanimated";
 
-import { useColorScheme } from '@/hooks/useColorScheme';
-
-// Prevent the splash screen from auto-hiding before asset loading is complete.
-SplashScreen.preventAutoHideAsync();
+// Inicializa traducciones
+i18nextConfig.initalizeI18Next();
 
 export default function RootLayout() {
-  const colorScheme = useColorScheme();
-  const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-  });
+    const { t } = useTranslation();
+    const colorScheme = useColorScheme();
+    const language = Localization.getLocales();
 
-  useEffect(() => {
-    if (loaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [loaded]);
+    console.log(`Lenguaje: ${language[0]?.languageCode}`);
+    console.log(`Tema: ${colorScheme}`);
 
-  if (!loaded) {
-    return null;
-  }
-
-  return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
-  );
+    return (
+        <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
+            <Stack
+                screenOptions={{
+                    headerBackground: () => (
+                        <LinearGradient colors={Colors[colorScheme ?? "light"].gradien} style={StyleSheet.absoluteFill} />
+                    ),
+                    headerTitleAlign: "center",
+                    headerTintColor: "#fff",
+                    headerTitleStyle: {
+                        fontWeight: "bold",
+                    },
+                    statusBarStyle: "dark",
+                    statusBarBackgroundColor: "#ECF2FF",
+                    statusBarHidden: false,
+                    statusBarTranslucent: true,
+                }}
+            >
+                <Stack.Screen name="sign-in" options={{ title: t("login.title") }} />
+                <Stack.Screen name="(app)" options={{ headerShown: false }} />
+            </Stack>
+        </ThemeProvider>
+    );
 }
