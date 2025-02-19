@@ -1,5 +1,4 @@
 import ActivityIdicator from '@/components/Loading/ActivityIdicator';
-import Show from '@/components/Show/Show';
 import { useAuthStore } from '@/store/useAuthStore';
 import { Redirect, Stack } from 'expo-router';
 import React, { useEffect } from 'react';
@@ -10,19 +9,18 @@ const AppLayout = () => {
     useEffect(() => {
         loadUserData(); 
     }, []); 
-    return (
-        <Show>
-            <Show.When isTrue={loading} >
-                <ActivityIdicator />
-            </Show.When>
-            <Show.When isTrue={!User}>
-                <Redirect href="/sign-in"/>
-            </Show.When> 
-            <Show.Else>
-                <Stack screenOptions={{ headerShown: false }} />;
-            </Show.Else>
-        </Show>
-    )
+
+    if (loading) {
+        return <ActivityIdicator />; 
+    }
+
+
+    if (!User) {
+        return <Redirect href="/sign-in" />;
+    }
+
+    return <Stack screenOptions={{ headerShown: false }} />;
+    
 }
 
 export default AppLayout;
