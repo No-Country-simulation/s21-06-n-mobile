@@ -7,10 +7,11 @@ import * as Localization from "expo-localization";
 import { Stack } from "expo-router";
 import { useTranslation } from "react-i18next";
 import { StyleSheet } from "react-native";
-import "react-native-reanimated";
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 // Inicializa traducciones
 i18nextConfig.initalizeI18Next();
+// GoogleSignin.configure();
 
 export default function RootLayout() {
     const { t } = useTranslation();
