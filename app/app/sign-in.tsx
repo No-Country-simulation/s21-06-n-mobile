@@ -29,12 +29,12 @@ const Login = () => {
       <View style={styles.formContain}>
         <FormLogin />
       </View>
-      <View style={styles.OAuthContainer}>
+      {/* <View style={styles.OAuthContainer}>
         <Text>{t("login.orSingUp")}</Text>
         <View style={styles.iconsContainer}>
           <GoogleLogin />
         </View>
-      </View>
+      </View> */}
     </View>
   );
 };

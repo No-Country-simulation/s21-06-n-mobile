@@ -11,7 +11,7 @@ import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 // Inicializa traducciones
 i18nextConfig.initalizeI18Next();
-GoogleSignin.configure();
+// GoogleSignin.configure();
 
 export default function RootLayout() {
     const { t } = useTranslation();
