@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '@/store/useAuthStore';
 import { Colors } from '@/constants/Colors';
 import FormLogin from '@/components/Form/FormLogin';
+import GoogleLogin from '@/components/OAuth/GoogleLogin';
 
 const Login = () => {
   const {User}  = useAuthStore(state => state);
@@ -27,6 +28,12 @@ const Login = () => {
       </View>
       <View style={styles.formContain}>
         <FormLogin />
+      </View>
+      <View style={styles.OAuthContainer}>
+        <Text>{t("login.orSingUp")}</Text>
+        <View style={styles.iconsContainer}>
+          <GoogleLogin />
+        </View>
       </View>
     </View>
   );
@@ -54,6 +61,16 @@ const styles = StyleSheet.create({
   text: {
     color: '#252525',
   },
+  OAuthContainer:{
+    flex: 1,
+    alignItems: 'center'
+  },
+  iconsContainer:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    width: 200,
+    marginTop: 20
+  }
 });
 
 export default Login;
