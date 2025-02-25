@@ -22,6 +22,7 @@ export const useAuthStore = create<IAuthStore>((set) => ({
       if (storedUser) {
         set({ User: JSON.parse(storedUser), loading: false });
       }
+      set({User: {email : 'marcos97britos@gmail.com'}, loading: false })
     } catch (error) {
       console.error('Error loading user data:', error);
     } finally {

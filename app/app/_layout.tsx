@@ -25,18 +25,19 @@ export default function RootLayout() {
         <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
             <Stack
                 screenOptions={{
-                    headerBackground: () => (
-                        <LinearGradient colors={Colors[colorScheme ?? "light"].gradien} style={StyleSheet.absoluteFill} />
-                    ),
-                    headerTitleAlign: "center",
-                    headerTintColor: "#fff",
-                    headerTitleStyle: {
-                        fontWeight: "bold",
-                    },
+                //     headerBackground: () => (
+                //         <LinearGradient colors={Colors[colorScheme ?? "light"].gradien} style={StyleSheet.absoluteFill} />
+                //     ),
+                //     headerTitleAlign: "center",
+                //     headerTintColor: "#fff",
+                //     headerTitleStyle: {
+                //         fontWeight: "bold",
+                //     },
                     statusBarStyle: "dark",
                     statusBarBackgroundColor: "#ECF2FF",
                     statusBarHidden: false,
                     statusBarTranslucent: true,
+                    headerShown: false
                 }}
             >
                 <Stack.Screen name="sign-in" options={{ title: t("login.title") }} />
