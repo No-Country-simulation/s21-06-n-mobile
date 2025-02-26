@@ -1,2 +1,6 @@
+import React, { useEffect } from 'react';
 import { Unmatched } from 'expo-router';
-export default Unmatched;
+
+export default function MyUnmatchedRoute() {
+    return <Unmatched />;
+}

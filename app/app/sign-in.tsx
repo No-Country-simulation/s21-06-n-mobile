@@ -1,18 +1,14 @@
-import { StyleSheet, Text, useColorScheme, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Redirect } from 'expo-router';
-import { useTranslation } from 'react-i18next';
-
 import { useAuthStore } from '@/store/useAuthStore';
-import { Colors } from '@/constants/Colors';
 import FormLogin from '@/components/Form/FormLogin';
 import GoogleLogin from '@/components/OAuth/GoogleLogin';
+import { useConfiguration } from '@/hooks/useColorScheme';
 
 const Login = () => {
   const {User}  = useAuthStore(state => state);
-  const { t } = useTranslation();
-  const colorScheme = useColorScheme();
-  const colorObject = Colors[colorScheme ?? 'light'];
+  const { t, colorObject } = useConfiguration();
 
   if (User) {
     return <Redirect href='/(app)/(home)' />;

@@ -1,21 +1,17 @@
-import { Colors } from "@/constants/Colors";
 import i18nextConfig from "@/constants/Traduction/i18";
-import { useColorScheme } from "@/hooks/useColorScheme";
 import { DarkTheme, DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import * as Localization from "expo-localization";
 import { Stack } from "expo-router";
-import { useTranslation } from "react-i18next";
-import { StyleSheet } from "react-native";
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { useConfiguration } from "@/hooks/useColorScheme";
 
 // Inicializa traducciones
 i18nextConfig.initalizeI18Next();
 // GoogleSignin.configure();
 
 export default function RootLayout() {
-    const { t } = useTranslation();
-    const colorScheme = useColorScheme();
+    const {t, colorObject, colorScheme} = useConfiguration();
     const language = Localization.getLocales();
 
     console.log(`Lenguaje: ${language[0]?.languageCode}`);
