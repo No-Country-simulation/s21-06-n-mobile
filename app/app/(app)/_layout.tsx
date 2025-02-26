@@ -3,6 +3,8 @@ import { useAuthStore } from '@/store/useAuthStore';
 import { Redirect, Tabs } from 'expo-router';
 import React, { useEffect } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 
 const AppLayout = () => {
     const { User, loading, loadUserData } = useAuthStore(state => state);
@@ -37,6 +39,16 @@ const AppLayout = () => {
                     shadowColor: 'transparent',
                     elevation: 0,
                 },
+                headerRight: () => (
+                    <View style={styles.iconContainer}>
+                        <TouchableOpacity onPress={() => console.log("Search pressed")}> 
+                            <Ionicons name="search" size={24} color="black" />
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={() => console.log("Notifications pressed")}>
+                            <SimpleLineIcons name="equalizer" size={24} color="black" />
+                        </TouchableOpacity>
+                    </View>
+                ),
                 tabBarIcon: ({ color }) => <FontAwesome size={28} name="home" color={color} />,
             }}
             />
@@ -44,5 +56,12 @@ const AppLayout = () => {
     )
     
 }
+const styles = StyleSheet.create({
+    iconContainer: {
+        flexDirection: "row",
+        gap: 15,
+        marginRight: 15,
+    },
+});
 
 export default AppLayout;
