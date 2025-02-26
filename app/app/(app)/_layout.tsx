@@ -26,6 +26,10 @@ const AppLayout = () => {
         <Tabs screenOptions={{tabBarActiveTintColor: 'blue'}}>
             <Tabs.Screen name="(home)" options={{
                 title: 'Home',
+                tabBarStyle:{
+                    borderTopLeftRadius: 20,
+                    borderTopRightRadius: 20,
+                },
                 headerTitle: 'AppiFriends',
                 headerStyle: {
                     shadowOpacity: 0,

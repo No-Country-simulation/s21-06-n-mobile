@@ -5,27 +5,29 @@ import Agenda from "./Agenda";
 import Virtual from "./Virtual";
 import InPerson from "./InPerson";
 import Hybrid from "./Hybrid";
+import { useConfiguration } from "@/hooks/useColorScheme";
 
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function HomeLayout() {
+    const { colorObject } = useConfiguration();
     return (
         <Tab.Navigator
             tabIndex={0}
             screenOptions={{
                 tabBarStyle: {
-                    backgroundColor: "#fff",
+                    backgroundColor: colorObject.background,
                     height: 45,
                     paddingVertical: 0,
                     paddingHorizontal: 0,
                     marginVertical: 0,
                     marginHorizontal: 0
                 },
-                tabBarActiveTintColor: "#007AFF",
+                tabBarActiveTintColor: colorObject.text,
                 tabBarInactiveTintColor: "#000",
                 tabBarIndicatorStyle: {
-                    backgroundColor: "#000",
+                    backgroundColor: colorObject.text,
                     height: 3,
                     width: '8%',
                     marginLeft: '6%'
@@ -33,7 +35,7 @@ export default function HomeLayout() {
                 },
                 tabBarScrollEnabled: false,
                 tabBarLabelStyle: {
-                    color: '#000',
+                    color: colorObject.text,
                     fontWeight: "600",
                     fontSize: 16,
                     lineHeight: 24,

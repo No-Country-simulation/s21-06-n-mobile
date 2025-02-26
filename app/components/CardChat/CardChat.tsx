@@ -1,19 +1,23 @@
+import { useConfiguration } from '@/hooks/useColorScheme';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
+
 const CardChat = () => {
+    const { colorObject } = useConfiguration();
+    
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, { backgroundColor: colorObject.cardBackground, borderColor: colorObject.text}]}>
             <View style={styles.containTitle}>
-                <Text style={styles.owner}>Misael Bazn</Text>
+                <Text style={[styles.owner, {color: colorObject.text}]}>Misael Bazn</Text>
                 <View style={styles.containCategory}>
-                    <Text style={styles.category}>Musica</Text>
-                    <Text style={styles.category}>Virtual</Text>
-                    <Text style={styles.category}>Video Juegos</Text>
-                    <Text style={styles.category}>Lectura</Text>
+                    <Text style={[styles.category, {color: colorObject.text, borderColor: colorObject.text}]}>Musica</Text>
+                    <Text style={[styles.category,{color: colorObject.text, borderColor: colorObject.text}]}>Virtual</Text>
+                    <Text style={[styles.category, {color: colorObject.text, borderColor: colorObject.text}]}>Video Juegos</Text>
+                    <Text style={[styles.category, {color: colorObject.text, borderColor: colorObject.text}]}>Lectura</Text>
                 </View>
             </View>
-            <Text style={styles.title}>Hablemos del Concierto de Billie</Text>
+            <Text style={[styles.title, {color: colorObject.text}]}>Hablemos del Concierto de Billie</Text>
 
             <View style={styles.userContainer}>
                 <View style={styles.circleWrapper}>
@@ -36,7 +40,6 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         padding: 10,
         marginVertical: 5,
-        backgroundColor: '#f9f9f9',
         gap: 0
     },
     containTitle: {
@@ -89,7 +92,6 @@ const styles = StyleSheet.create({
         height: 20,
         borderRadius: 10,
         backgroundColor: '#A4A1A1',
-
     },
     personCount: {
         marginLeft: -15,

@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 import CardChat from '@/components/CardChat/CardChat';
 import { useAuth } from '@/hooks/useAuthentication';
-
+import { useConfiguration } from '@/hooks/useColorScheme';
 const Index = () => {
+    const { colorObject } = useConfiguration();
     const { handleLogout } = useAuth();
     const [data, setData] = useState([
         { id: '1', owner: 'Misael Bazn', categories: ['Musica', 'Virtual', 'Video Juegos', 'Lectura'], title: 'Hablemos del Concierto de Billie' },
@@ -19,10 +20,13 @@ const Index = () => {
             { id: '7', owner: 'Ana Ramírez', categories: ['Cine', 'Presencial'], title: 'Estreno de película en el cine' },
             { id: '8', owner: 'Luis Fernández', categories: ['Deportes', 'Fútbol'], title: 'Partido amistoso de fútbol' },
         ];
-        setData(prevData => [...prevData, ...newData]);
+        if (data.length.toString() === newData.findLast((item) => true)?.id.toString()) {
+            
+        } else{
+            setData(prevData => [...prevData, ...newData]);
+        }
+        
     };
-
-    // Generación de una clave única para cada elemento
     interface DataItem {
         id: string;
         owner: string;
@@ -33,7 +37,7 @@ const Index = () => {
     const keyExtractor = (item: DataItem, index: number): string => `${item.id}-${index}`;
 
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, {backgroundColor: colorObject.background}]}>
             <FlatList
                 style={{width: '100%'}}
                 data={data}
