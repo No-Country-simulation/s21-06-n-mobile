@@ -5,9 +5,13 @@ import React, { useEffect } from 'react';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
+import { useBottomSheetStore } from '@/store/bottomSheetStore';
 
 const AppLayout = () => {
     const { User, loading, loadUserData } = useAuthStore(state => state);
+    const isOpen = useBottomSheetStore(state => state.isOpen);
+    const openBottomSheet = useBottomSheetStore(state => state.openBottomSheet);
+    const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
 
     useEffect(() => {
         loadUserData(); 
@@ -44,7 +48,7 @@ const AppLayout = () => {
                         <TouchableOpacity onPress={() => console.log("Search pressed")}> 
                             <Ionicons name="search" size={24} color="black" />
                         </TouchableOpacity>
-                        <TouchableOpacity onPress={() => console.log("Notifications pressed")}>
+                        <TouchableOpacity onPress={() => isOpen ? closeBottomSheet() : openBottomSheet()}>
                             <SimpleLineIcons name="equalizer" size={24} color="black" />
                         </TouchableOpacity>
                     </View>

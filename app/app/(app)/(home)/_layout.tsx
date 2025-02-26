@@ -6,6 +6,9 @@ import Virtual from "./Virtual";
 import InPerson from "./InPerson";
 import Hybrid from "./Hybrid";
 import { useConfiguration } from "@/hooks/useColorScheme";
+import BottomSheet from "@gorhom/bottom-sheet";
+import GlobalBottomSheet from "@/components/BottomSheet/BottomSheet";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -13,6 +16,8 @@ const Tab = createMaterialTopTabNavigator();
 export default function HomeLayout() {
     const { colorObject } = useConfiguration();
     return (
+        <GestureHandlerRootView style={{ flex: 1 }}>
+       
         <Tab.Navigator
             tabIndex={0}
             screenOptions={{
@@ -56,6 +61,7 @@ export default function HomeLayout() {
             <Tab.Screen name="InPerson" component={InPerson} options={{ title: "Presencial" }} />
             <Tab.Screen name="Hybrid" component={Hybrid} options={{ title: "Hibrido" }} />
         </Tab.Navigator>
-
+        <GlobalBottomSheet />
+        </GestureHandlerRootView>
     );
 }
