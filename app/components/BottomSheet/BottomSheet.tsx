@@ -3,12 +3,10 @@ import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Text, TouchableOpacity, StyleSheet, View, FlatList } from 'react-native';
 import { useBottomSheetStore } from '../../store/bottomSheetStore';
 
-// Lista de filtros
 const FILTERS = [
-    { category: 'Artes e intereses', options: ['Arete', 'Cultura', 'Musica', '123123', 'alhiqwue', '123jahiagqywgeuqfeqwteqw'] },
-    { category: 'Deportes', options: ['Futbol', 'Basket', 'Tenis'] },
+    { category: 'Artes e intereses', options: ['Arte', 'Cultura', 'Música', 'Pintura', 'Teatro'] },
+    { category: 'Deportes', options: ['Fútbol', 'Basket', 'Tenis'] },
     { category: 'Social', options: ['Reuniones', 'Eventos', 'Amigos'] },
-    // Agregar más categorías si es necesario
 ];
 
 export default function GlobalBottomSheet() {
@@ -16,21 +14,19 @@ export default function GlobalBottomSheet() {
     const isOpen = useBottomSheetStore(state => state.isOpen);
     const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
 
-    // Estado para los filtros seleccionados
-    const [selectedFilters, setSelectedFilters] = useState<any>({
+    const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({
         'Artes e intereses': [],
         'Deportes': [],
         'Social': [],
     });
 
-    // Maneja la selección de los filtros
     const toggleFilter = (category: string, option: string) => {
-        setSelectedFilters((prevState: Record<string, string[]>) => {
+        setSelectedFilters(prevState => {
             const updated = { ...prevState };
             if (updated[category].includes(option)) {
-            updated[category] = updated[category].filter((item: string) => item !== option);
+                updated[category] = updated[category].filter(item => item !== option);
             } else {
-            updated[category].push(option);
+                updated[category].push(option);
             }
             return updated;
         });
@@ -44,41 +40,34 @@ export default function GlobalBottomSheet() {
         }
     }, [isOpen]);
 
-    // Función para confirmar los filtros
     const applyFilters = () => {
         console.log('Aplicando filtros:', selectedFilters);
-        // Aquí puedes hacer lo que necesites con los filtros seleccionados
         closeBottomSheet();
     };
 
-    // Renderiza las opciones de cada filtro
-    const renderFilterOptions = (category: string, options: string[]) => {
-        return (
-            <View style={{flex: 1, flexDirection:'row', columnGap: 5, flexWrap: 'wrap'}}>
-                {options.map(option => (
-                    <View key={option} style={styles.optionContainer}>
-                        <TouchableOpacity onPress={() => toggleFilter(category, option)}>
-                            <View
-                                style={[
-                                    styles.optionBox,
-                                    selectedFilters[category]?.includes(option) && styles.selectedOption,
-                                ]}
-                            >
-                                <Text
-                                    style={[
-                                        styles.optionText,
-                                        selectedFilters[category]?.includes(option) && styles.selectedText,
-                                    ]}
-                                >
-                                    {option}
-                                </Text>
-                            </View>
-                        </TouchableOpacity>
+    const renderFilterOptions = (category: string, options: string[]) => (
+        <View style={styles.optionsContainer}>
+            {options.map(option => (
+                <TouchableOpacity key={option} onPress={() => toggleFilter(category, option)}>
+                    <View
+                        style={[
+                            styles.optionBox,
+                            selectedFilters[category]?.includes(option) && styles.selectedOption,
+                        ]}
+                    >
+                        <Text
+                            style={[
+                                styles.optionText,
+                                selectedFilters[category]?.includes(option) && styles.selectedText,
+                            ]}
+                        >
+                            {option}
+                        </Text>
                     </View>
-                ))}
-            </View>
-        );
-    };
+                </TouchableOpacity>
+            ))}
+        </View>
+    );
 
     return (
         <BottomSheet
@@ -101,7 +90,7 @@ export default function GlobalBottomSheet() {
                     )}
                 />
                 <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
-                    <Text style={styles.applyButtonText}>Aplicar filtros</Text>
+                    <Text style={styles.applyButtonText}>Confirmar filtros</Text>
                 </TouchableOpacity>
             </BottomSheetView>
         </BottomSheet>
@@ -112,25 +101,24 @@ const styles = StyleSheet.create({
     contentContainer: {
         flex: 1,
         padding: 20,
-        alignItems: 'flex-start',
     },
     title: {
         fontSize: 18,
-        fontWeight: 500,
+        fontWeight: '500',
         marginBottom: 20,
-        lineHeight: 22
     },
     filterContainer: {
         marginBottom: 20,
     },
     filterTitle: {
         fontSize: 16,
-        fontWeight: 500,
+        fontWeight: '500',
         marginBottom: 10,
-        lineHeight: 24
     },
-    optionContainer: {
-        marginBottom: 0,
+    optionsContainer: {
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        gap: 8,
     },
     optionBox: {
         borderWidth: 1,
@@ -138,26 +126,24 @@ const styles = StyleSheet.create({
         borderRadius: 27,
         paddingVertical: 10,
         paddingHorizontal: 15,
-        marginBottom: 10,
         alignItems: 'center',
+        justifyContent: 'center',
     },
     selectedOption: {
-        backgroundColor: '#7F7F7F80', // Color de fondo cuando está seleccionado
+        backgroundColor: '#7F7F7F80',
     },
     optionText: {
         fontSize: 16,
-        lineHeight: 22,
         color: '#000',
     },
     selectedText: {
-        color: '#000', // Cambia el color del texto cuando está seleccionado
+        color: '#000',
     },
     applyButton: {
         marginTop: 20,
-        backgroundColor: '#007bff',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
-        borderRadius: 5,
+        backgroundColor: '#1C1B1F',
+        paddingVertical: 14,
+        borderRadius: 12,
         width: '100%',
         alignItems: 'center',
     },
