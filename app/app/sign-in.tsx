@@ -22,15 +22,15 @@ const Login = () => {
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam enim, eum obcaecati tempora dicta, nemo illo accusantium nisi, nesciunt debitis voluptas doloremque autem impedit voluptatum nulla et? Eaque, omnis vel.
         </Text>
       </View>
-      <View style={styles.formContain}>
+      {/* <View style={styles.formContain}>
         <FormLogin />
-      </View>
-      {/* <View style={styles.OAuthContainer}>
+      </View> */}
+      <View style={styles.OAuthContainer}>
         <Text>{t("login.orSingUp")}</Text>
         <View style={styles.iconsContainer}>
           <GoogleLogin />
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignItems: 'center',
+    marginTop: 50
   },
   titleContainer: {
     width: '90%',

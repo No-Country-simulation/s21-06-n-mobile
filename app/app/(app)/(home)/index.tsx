@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
 import CardChat from '@/components/Cards/CardChat';
 import { useAuth } from '@/hooks/useAuthentication';
 import { useConfiguration } from '@/hooks/useColorScheme';
-import { useData } from '@/hooks/useData';
 import Show from '@/components/Show/Show';
 import ActivityIdicator from '@/components/Loading/ActivityIdicator';
+import { useEventStore } from '@/store/useEventStore';
+
 const Index = () => {
     const { colorObject } = useConfiguration();
     const { handleLogout } = useAuth();
-    const { events, loading, loadMore } = useData();
+    const { events, filterCategories, loading, loadEventsWithFilter } = useEventStore();
 
     const keyExtractor = (item: IEventItem, index: number): string => `${item.id}-${index}`;
 
+    useEffect(() => {
+        if (events.length === 0 && !loading) {
+            console.log('📌 Primera carga de eventos...');
+            loadEventsWithFilter(filterCategories);
+        }
+    }, []);
+
+    console.log('📌 Renderizando componente...');
     return (
         <Show>
             <Show.When isTrue={loading}>
@@ -29,7 +38,7 @@ const Index = () => {
                             </View>
                         )}
                         keyExtractor={keyExtractor}
-                        onEndReached={loadMore}
+                        onEndReached={() => loadEventsWithFilter(filterCategories)}
                         onEndReachedThreshold={0.1}
                     />
                     <Button title="Cerrar sesión" onPress={handleLogout} />
@@ -40,7 +49,7 @@ const Index = () => {
             </Show.Else>
         </Show>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -51,7 +60,7 @@ const styles = StyleSheet.create({
     },
     cardWrapper: {
         width: '100%',
-        alignItems: 'center'
+        alignItems: 'center',
     },
 });
 

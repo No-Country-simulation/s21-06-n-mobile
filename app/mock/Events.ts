@@ -225,9 +225,10 @@ const today = new Date();
 const tomorrow = new Date(new Date().setDate(today.getDate() + 1));
 
 export const Categories = [
-    { category: 'Artes e intereses', options: ['Arte', 'Cultura', 'Música', 'Pintura', 'Teatro'] },
-    { category: 'Deportes', options: ['Fútbol', 'Basket', 'Tenis'] },
-    { category: 'Social y estilo de vida', options: ['Comida', 'Viajes', 'Salidas'] },
+    { category: 'Artes e intereses', options: ['Arte', 'Cultura', 'Música', 'Pintura', 'Teatro', 'Actuación', 'Danza', 'Escritura', 'Poesía'] },
+    { category: 'Deportes', options: ['Fútbol', 'Basket', 'Tenis', 'Yoga', 'Running', 'Salud'] },
+    { category: 'Social y estilo de vida', options: ['Comida', 'Viajes', 'Salidas', 'Cultura', 'Moda', 'Tendencias', 'Meditación', 'Bienestar'] },
+    { category: 'Tecnología', options: ['Desarrollo', 'Virtual', 'Ciberseguridad', 'Hacking', 'IA', 'Machine Learning', 'Blockchain', 'Criptomonedas', 'Programación', 'Web'] }
 ];
 
 export const Types: ITypes[] = [

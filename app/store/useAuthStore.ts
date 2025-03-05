@@ -13,7 +13,13 @@ interface IAuthStore {
 export const useAuthStore = create<IAuthStore>((set) => ({
   User: null,
   loading: true,
-  setUser: (user) => set({ User: user }),
+  setUser: async (user) => { 
+    if (user) {
+      await SecureStore.setItemAsync('user', JSON.stringify(user))
+      set( { User: user })
+    }
+
+  },
   setLoading: (loading) => set({ loading }),
   loadUserData: async () => {
     set({ loading: true });
@@ -21,8 +27,9 @@ export const useAuthStore = create<IAuthStore>((set) => ({
       const storedUser = await SecureStore.getItemAsync('user');
       if (storedUser) {
         set({ User: JSON.parse(storedUser), loading: false });
+      }else{
+        set({User: null, loading: false })
       }
-      set({User: {email : 'marcos97britos@gmail.com'}, loading: false })
     } catch (error) {
       console.error('Error loading user data:', error);
     } finally {

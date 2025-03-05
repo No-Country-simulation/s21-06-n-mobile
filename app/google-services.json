@@ -39,6 +39,14 @@
             "package_name": "com.s2106m.app",
             "certificate_hash": "01c5c34c92e252f48845ce7e7588f2994cfceb13"
           }
+        },
+        {
+          "client_id": "831762310457-c6klb4li3jaosig3pn7up5gui8t7lfl9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.s2106m.app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
         }
       ],
       "api_key": [

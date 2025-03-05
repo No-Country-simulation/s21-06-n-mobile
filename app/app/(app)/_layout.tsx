@@ -24,11 +24,13 @@ const AppLayout = () => {
 
 
     if (!User) {
+        console.log(User)
+        console.log('volviendo a login')
         return <Redirect href="/sign-in" />;
     }
 
     return (
-        <Tabs screenOptions={{tabBarActiveTintColor: colorObject.text}}>
+        <Tabs screenOptions={{tabBarActiveTintColor: colorObject.tabIconSelected}}>
             <Tabs.Screen name="(home)" options={{
                 title: 'Home',
                 tabBarStyle:{
@@ -52,7 +54,7 @@ const AppLayout = () => {
                         </TouchableOpacity>
                     </View>
                 ),
-                tabBarIcon: () => <FontAwesome size={28} name="home" color={colorObject.text} />,
+                tabBarIcon: ({focused}) => <FontAwesome size={28} name="home" color={focused ? colorObject.tabIconSelected : colorObject.text} />,
             }}
             />
         </Tabs>

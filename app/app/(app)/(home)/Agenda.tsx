@@ -3,26 +3,63 @@ import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import Show from '@/components/Show/Show';
 import { useAuth } from '@/hooks/useAuthentication';
 import { useConfiguration } from '@/hooks/useColorScheme';
-import { useData } from '@/hooks/useData';
-import React, { useEffect } from 'react';
+import { useEventStore } from '@/store/useEventStore';
+import React, { useEffect, useState } from 'react';
 import { Button, SectionList, StyleSheet, Text, View } from 'react-native';
 
 const Agenda = () => {
     const { colorObject } = useConfiguration();
     const { handleLogout } = useAuth();
+    const [section, setSection] = useState<ISection[]>([]);
+    const [loadingSection, setLoadingSection] = useState<boolean>(false);
+    const { events, loading, loadEventsWithFilter, filterCategories } = useEventStore();
 
-    const { sections, loadingSections } = useData();
+    useEffect(() => {
+        if (events.length === 0) {
+            loadEventsWithFilter(filterCategories);
+        }
+
+    }, [loadEventsWithFilter]);
+
+
+    useEffect(() => {
+        if (filterCategories.length > 0) {
+            loadEventsWithFilter(filterCategories);
+        }
+    }, [filterCategories]);
+
+    useEffect(() => {
+      if (events.length !== 0) {
+        groupEventsByDate(events);
+      }
+    }, [events])
+    
+
+    const groupEventsByDate = (eventList: IEventItem[]): void => {
+        const today = new Date();
+        const tomorrow = new Date(new Date().setDate(today.getDate() + 1));
+        setLoadingSection(true);
+        
+        let data = [
+            { title: 'Hoy', data: eventList.filter(event => event.date.toDateString() === today.toDateString()) },
+            { title: 'Mañana', data: eventList.filter(event => event.date.toDateString() === tomorrow.toDateString()) },
+            { title: 'Próximamente', data: eventList.filter(event => event.date > tomorrow) },
+        ].filter(section => section.data.length > 0);
+
+        setSection(data);
+        setLoadingSection(false);
+    };
 
     return (
         <Show>
-            <Show.When isTrue={loadingSections}>
+            <Show.When isTrue={loadingSection}>
                 <ActivityIdicator />
             </Show.When>
-            <Show.When isTrue={!loadingSections && sections.length !== 0}>
+            <Show.When isTrue={!loadingSection && section.length !== 0}>
                 <View style={[styles.container, { backgroundColor: colorObject.background }]}>
                     <SectionList
                         style={{ width: '90%' }}
-                        sections={sections}
+                        sections={section}
                         keyExtractor={(item) => item.id}
                         renderSectionHeader={({ section: { title } }) => (
                             <Text style={[styles.sectionHeader, { color: colorObject.text }]}>{title}</Text>

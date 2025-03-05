@@ -1,36 +1,20 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Text, TouchableOpacity, StyleSheet, View, FlatList } from 'react-native';
 import { useBottomSheetStore } from '../../store/bottomSheetStore';
-
-const FILTERS = [
-    { category: 'Artes e intereses', options: ['Arte', 'Cultura', 'Música', 'Pintura', 'Teatro'] },
-    { category: 'Deportes', options: ['Fútbol', 'Basket', 'Tenis'] },
-    { category: 'Social', options: ['Reuniones', 'Eventos', 'Amigos'] },
-];
+import { Categories } from '@/mock/Events';
+import { useEventStore } from '@/store/useEventStore';
+import ActivityIdicator from '../Loading/ActivityIdicator';
+import { useConfiguration } from '@/hooks/useColorScheme';
 
 export default function GlobalBottomSheet() {
     const bottomSheetRef = useRef<BottomSheet>(null);
     const isOpen = useBottomSheetStore(state => state.isOpen);
     const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
+    const { filterCategories, setFilterCategories, loadEventsWithFilter } = useEventStore();
+    const { colorObject } = useConfiguration();
 
-    const [selectedFilters, setSelectedFilters] = useState<Record<string, string[]>>({
-        'Artes e intereses': [],
-        'Deportes': [],
-        'Social': [],
-    });
 
-    const toggleFilter = (category: string, option: string) => {
-        setSelectedFilters(prevState => {
-            const updated = { ...prevState };
-            if (updated[category].includes(option)) {
-                updated[category] = updated[category].filter(item => item !== option);
-            } else {
-                updated[category].push(option);
-            }
-            return updated;
-        });
-    };
 
     useEffect(() => {
         if (isOpen) {
@@ -40,10 +24,24 @@ export default function GlobalBottomSheet() {
         }
     }, [isOpen]);
 
+
     const applyFilters = () => {
-        console.log('Aplicando filtros:', selectedFilters);
-        closeBottomSheet();
+        loadEventsWithFilter(filterCategories); 
+        closeBottomSheet(); 
     };
+
+
+    const toggleFilter = (category: string, option: string) => {
+        let filter = filterCategories;
+        if(filterCategories.includes(option)){
+            filter = filterCategories.filter(x => x !== option)
+        }else{
+            filter.push(option)   
+        }
+        setFilterCategories(filter)
+    };
+    
+
 
     const renderFilterOptions = (category: string, options: string[]) => (
         <View style={styles.optionsContainer}>
@@ -52,13 +50,13 @@ export default function GlobalBottomSheet() {
                     <View
                         style={[
                             styles.optionBox,
-                            selectedFilters[category]?.includes(option) && styles.selectedOption,
+                            filterCategories.includes(option) && styles.selectedOption,
                         ]}
                     >
                         <Text
                             style={[
                                 styles.optionText,
-                                selectedFilters[category]?.includes(option) && styles.selectedText,
+                                filterCategories.includes(option) && styles.selectedText,
                             ]}
                         >
                             {option}
@@ -68,6 +66,10 @@ export default function GlobalBottomSheet() {
             ))}
         </View>
     );
+
+    if (filterCategories === undefined) {
+        return <ActivityIdicator />
+    }
 
     return (
         <BottomSheet
@@ -80,7 +82,7 @@ export default function GlobalBottomSheet() {
             <BottomSheetView style={styles.contentContainer}>
                 <Text style={styles.title}>Filtros de búsqueda</Text>
                 <FlatList
-                    data={FILTERS}
+                    data={Categories}
                     keyExtractor={item => item.category}
                     renderItem={({ item }) => (
                         <View style={styles.filterContainer}>
@@ -89,7 +91,7 @@ export default function GlobalBottomSheet() {
                         </View>
                     )}
                 />
-                <TouchableOpacity style={styles.applyButton} onPress={applyFilters}>
+                <TouchableOpacity style={[styles.applyButton, {backgroundColor: colorObject.buttonBackground}]} onPress={applyFilters}>
                     <Text style={styles.applyButtonText}>Confirmar filtros</Text>
                 </TouchableOpacity>
             </BottomSheetView>

@@ -8,7 +8,9 @@ import { useConfiguration } from "@/hooks/useColorScheme";
 
 // Inicializa traducciones
 i18nextConfig.initalizeI18Next();
-// GoogleSignin.configure();
+GoogleSignin.configure({
+    webClientId: ''
+});
 
 export default function RootLayout() {
     const {t, colorObject, colorScheme} = useConfiguration();
@@ -29,8 +31,8 @@ export default function RootLayout() {
                 //     headerTitleStyle: {
                 //         fontWeight: "bold",
                 //     },
-                    statusBarStyle: "dark",
-                    statusBarBackgroundColor: "#ECF2FF",
+                    statusBarStyle: 'inverted',
+                    statusBarBackgroundColor: colorObject.background,
                     statusBarHidden: false,
                     statusBarTranslucent: true,
                     headerShown: false

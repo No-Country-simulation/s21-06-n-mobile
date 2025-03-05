@@ -24,8 +24,8 @@ export default function GoogleLogin() {
       var e = await GoogleSignin.getTokens();
       console.log(e.accessToken)
       await handleLogin({
-        email : "",
-        password: ''
+        email : userInfo.data?.user.email ?? '',
+        password: 'Test123!'
       })
       
     } catch (error: any) {
