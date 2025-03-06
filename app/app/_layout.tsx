@@ -8,9 +8,7 @@ import { useConfiguration } from "@/hooks/useColorScheme";
 
 // Inicializa traducciones
 i18nextConfig.initalizeI18Next();
-GoogleSignin.configure({
-    webClientId: ''
-});
+// GoogleSignin.configure();
 
 export default function RootLayout() {
     const {t, colorObject, colorScheme} = useConfiguration();

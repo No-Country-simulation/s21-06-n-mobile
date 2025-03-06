@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View } from 'react-native';
 import CardChat from '@/components/Cards/CardChat';
 import { useAuth } from '@/hooks/useAuthentication';
 import { useConfiguration } from '@/hooks/useColorScheme';
@@ -46,7 +46,6 @@ const InPerson = () => {
                         onEndReached={() => loadEventsWithFilter(filterCategories)}
                         onEndReachedThreshold={0.1}
                     />
-                    <Button title="Cerrar sesión" onPress={handleLogout} />
                 </View>
             </Show.When>
             <Show.Else>
