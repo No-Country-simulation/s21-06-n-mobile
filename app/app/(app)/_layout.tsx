@@ -57,6 +57,14 @@ const AppLayout = () => {
                 tabBarIcon: ({focused}) => <FontAwesome size={28} name="home" color={focused ? colorObject.tabIconSelected : colorObject.text} />,
             }}
             />
+            <Tabs.Screen name='(profile)'
+                options={{
+                    title: "Profile",
+                    headerShown: false,
+                    tabBarIcon: ({focused}) => <FontAwesome size={28} name="user" color={focused ? colorObject.tabIconSelected : colorObject.text} />
+                }}
+            />
+    
         </Tabs>
     )
     
