@@ -31,7 +31,7 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 
 **Enlace:**
 
-[![FIGMA]( )
+[![FIGMA](https://www.figma.com/design/opTZeA1mcMUSNyumOxG7Db/UI-Design?node-id=440-7058&t=qFoYGaZBZW5HLRBL-1)
 [![Sitio web]( )
 
 
