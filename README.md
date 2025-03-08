@@ -4,7 +4,7 @@
 Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras que fomenten la conexión humana. Nuestra misión es ofrecerte una plataforma segura y accesible para ampliar tu círculo social, participar en actividades grupales y descubrir comunidades afines sin la presión de encuentros individuales.
 
 <div align="center">
-<img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Imgreadme/con%20fondo.png" alt="portada" />
+<img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/con%20fondo.png" alt="portada" />
 </div>
 
 ## 🤩 Nuestro Proyecto
