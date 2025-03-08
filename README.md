@@ -37,19 +37,19 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 
 ## 🔧 ¿Cómo instalar y utilizar el proyecto?
 
-### **Paso1️⃣ Clonar el repositorio**
+### **Paso 1️ Clonar el repositorio**
 ```sh
 git clone https://github.com/No-Country-simulation/s21-06-n-mobile 
 cd s21-06-n-mobile
 ```
-### **Paso2️⃣ Configurar el Backend**
+### **Paso 2️ Configurar el Backend**
 ```sh
 cd backend
 npm install
 cp .env.example .env  # Configurar las variables de entorno
 npm run dev  # Iniciar servidor
 ```
-### **Paso3️⃣ Configurar el Frontend**
+### **Paso 3️ Configurar el Frontend**
 ```sh
 cd frontend
 npm install
