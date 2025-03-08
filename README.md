@@ -37,7 +37,25 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 
 ## 🔧 ¿Cómo instalar y utilizar el proyecto?
 
-**guia para usuarios y colaboradores**
+### **Paso1️⃣ Clonar el repositorio**
+```sh
+git clone https://github.com/No-Country-simulation/s21-06-n-mobile 
+cd s21-06-n-mobile
+```
+### **Paso2️⃣ Configurar el Backend**
+```sh
+cd backend
+npm install
+cp .env.example .env  # Configurar las variables de entorno
+npm run dev  # Iniciar servidor
+```
+### **Paso3️⃣ Configurar el Frontend**
+```sh
+cd frontend
+npm install
+npm run dev  # Iniciar el cliente
+```
+
 
 
 
@@ -99,3 +117,7 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 <div align="center">
 <img src=" " alt="capturas o demo" />
 </div>
+
+
+---
+Hecho con 💜🩵 por el equipo s21-06-n-mobile
