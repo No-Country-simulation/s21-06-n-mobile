@@ -74,7 +74,7 @@ npm run dev  # Iniciar el cliente
     <td align="center">Designer UX/UI</td>
     <td align="center">Designer UX/UI</td>
     <td align="center">Dev Backend</td>
-  </tr>
+  </tr>.
   <tr>
     <td align="center"><a href=" ">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
@@ -102,7 +102,7 @@ npm run dev  # Iniciar el cliente
     <td align="center">Quality Assurance </td>
   </tr>
   <tr>
-    <td align="center"><a href=" ">
+    <td align="center"><a href="https://www.linkedin.com/in/juanpablohm/">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
     </a></td>
     <td align="center"><a href="https://www.linkedin.com/in/styff-castro/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">
