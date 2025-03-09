@@ -115,7 +115,7 @@ npm run dev  # Iniciar el cliente
 ## 📷 Demo
 
 <div align="center">
-<img src=" " alt="capturas o demo" />
+<img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/Captura%20de%20pantalla%202025-03-05%20194832.png" alt="capturas o demo" />
 </div>
 
 
