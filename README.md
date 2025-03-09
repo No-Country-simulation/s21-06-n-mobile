@@ -74,7 +74,7 @@ npm run dev  # Iniciar el cliente
     <td align="center">Designer UX/UI</td>
     <td align="center">Designer UX/UI</td>
     <td align="center">Dev Backend</td>
-  </tr>.
+  </tr>
   <tr>
     <td align="center"><a href=" ">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
