@@ -29,7 +29,7 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 ![React_native](https://img.shields.io/badge/react_native-%23007ACC.svg?style=for-the-badge&logo=react&logoColor=white) 
 
 
-**Enlace:**
+**Enlaces:**
 
 [![FIGMA](https://img.shields.io/badge/figma-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/design/opTZeA1mcMUSNyumOxG7Db/UI-Design?node-id=440-7058&t=qFoYGaZBZW5HLRBL-1>)
 [![Aplicacion]( )
@@ -82,7 +82,7 @@ npm run dev  # Iniciar el cliente
     <td align="center"><a href="https://www.linkedin.com/in/nayely-rodriguez-auccasi-45a049260/">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
     </a></td>
-    <td align="center"><a href=" ">
+    <td align="center"><a href="https://www.linkedin.com/in/albajsanchez/">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
     </a></td>
     <td align="center"><a href=" ">
