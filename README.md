@@ -64,9 +64,9 @@ npm run dev  # Iniciar el cliente
 <table align="center">
   
   <tr>
-    <td align="center">Marcos Exequiel <img src=" " width="16" /></td>
-    <td align="center">Nayely Rodriguez <img src=" " width="16" /></td>
-    <td align="center">Alba Sanchez <img src=" " width="16" /></td>
+    <td align="center">Marcos Exequiel <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
+    <td align="center">Nayely Rodriguez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/pe.png" width="16" /></td>
+    <td align="center">Alba Sanchez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
     <td align="center">Agustin Suarez <img src=" " width="16" /></td>
   </tr>
   <tr>
@@ -94,8 +94,8 @@ npm run dev  # Iniciar el cliente
 
 <table align="center">
   <tr>
-    <td align="center">Juan Hernandez <img src=" " width="16" /></td>
-    <td align="center">Styfferson Castro <img src=" g" width="16" /></td>
+    <td align="center">Juan Hernandez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
+    <td align="center">Styfferson Castro <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ve.png" width="16" /></td>
   </tr>
   <tr>
     <td align="center">Quality Assurance </td>
