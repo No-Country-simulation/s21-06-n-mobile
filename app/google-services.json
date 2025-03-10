@@ -1,0 +1,65 @@
+{
+  "project_info": {
+    "project_number": "831762310457",
+    "project_id": "auth-example-c969c",
+    "storage_bucket": "auth-example-c969c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831762310457:android:0214e8457f48b0f79ff4e8",
+        "android_client_info": {
+          "package_name": "com.exequiel65.Health"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdcvqzohEaBw5_NthBKmilr_MRhM7lfDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:831762310457:android:3d4597ab1ef973229ff4e8",
+        "android_client_info": {
+          "package_name": "com.s2106m.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "831762310457-4nvbig5dsviihqnjctci8founmurkmt5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.s2106m.app",
+            "certificate_hash": "01c5c34c92e252f48845ce7e7588f2994cfceb13"
+          }
+        },
+        {
+          "client_id": "831762310457-c6klb4li3jaosig3pn7up5gui8t7lfl9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.s2106m.app",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdcvqzohEaBw5_NthBKmilr_MRhM7lfDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,27 @@
+{
+  "welcome": "¡Únete Ahora!",
+  "login": {
+      "title" : "Iniciar sesión",
+      "button" : "Iniciar sesión",
+      "description":"Haz conexiones reales sin presiones con personas que comparten tu estilo de vida. Encuentra tu tribu y vive nuevas experiencias.",
+      "labels" : {
+        "email" : "Correo electrónico",
+        "password": "Contraseña"
+      },
+      "errors": {
+          "email": {
+              "invalidEmail": "Formato de correo electrónico inválido",
+              "required": "El correo electrónico es obligatorio"
+          },
+          "password": {
+              "min": "Debe tener al menos 8 caracteres",
+              "max": "No puede tener más de 50 caracteres",
+              "required": "La contraseña es requerida",
+              "letterLower" : "La contraseña debe contener al menos una letra minúscula",
+              "letterUpper": "La contraseña debe contener al menos una letra mayúscula",
+              "letterNumeric": "La contraseña debe contener al menos un número",
+              "specialCharacter": "La contraseña debe contener al menos un carácter especial"
+          }
+      }
+  }
+}

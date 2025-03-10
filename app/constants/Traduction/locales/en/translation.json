@@ -1,0 +1,27 @@
+{
+  "welcome": "Join now!",
+  "login": {
+    "title": "Log In",
+    "button": "Log In",
+    "description":"Make real, pressure-free connections with people who share your lifestyle. Find your tribe and live new experiences.",
+    "labels": {
+      "email": "Email",
+      "password": "Password"
+    },
+    "errors": {
+      "email": {
+        "invalidEmail": "Invalid email format",
+        "required": "Email is required"
+      },
+      "password": {
+        "min": "Must be at least 8 characters",
+        "max": "Cannot be more than 50 characters",
+        "required": "Password is required",
+        "letterLower": "Password must contain at least one lowercase letter",
+        "letterUpper": "Password must contain at least one uppercase letter",
+        "letterNumeric": "Password must contain at least one number",
+        "specialCharacter": "Password must contain at least one special character"
+      }
+    }
+  }
+}
