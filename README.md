@@ -33,7 +33,7 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 
 [![FIGMA](https://img.shields.io/badge/figma-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/design/opTZeA1mcMUSNyumOxG7Db/UI-Design?node-id=440-7058&t=qFoYGaZBZW5HLRBL-1>)
 [![Aplicacion]( )
-[![Notion](https://img.shields.io/badge/Notion-%23007BCC.svg?style=for-the-badge&logo=notion&logoColor=white)
+[![Notion](https://img.shields.io/badge/Notion-%83007BCC.svg?style=for-the-badge&logo=notion&logoColor=white)
 
 
 ## 🔍Pruebas de Qa
