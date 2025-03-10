@@ -1,8 +1,9 @@
 {
-  "welcome": "Welcome",
+  "welcome": "Join now!",
   "login": {
     "title": "Log In",
     "button": "Log In",
+    "description":"Make real, pressure-free connections with people who share your lifestyle. Find your tribe and live new experiences.",
     "labels": {
       "email": "Email",
       "password": "Password"

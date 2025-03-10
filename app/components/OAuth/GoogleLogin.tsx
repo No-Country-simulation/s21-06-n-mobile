@@ -1,10 +1,11 @@
 import React from 'react';
-import { Button, View } from 'react-native';
+import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import { useAuth } from '@/hooks/useAuthentication';
+import { useConfiguration } from '@/hooks/useColorScheme';
 
 export default function GoogleLogin() {
-  
+  const { colorObject} = useConfiguration();
   const { handleLogin } = useAuth();
 
 
@@ -42,8 +43,30 @@ export default function GoogleLogin() {
   };
 
   return (
-    <View>
-      <Button title="Sign in with Google" onPress={signIn} />
-    </View>
+    <TouchableOpacity onPress={signIn} style={[styles.button, {backgroundColor: colorObject.buttonBackground}]}>
+      <Image 
+        source={require('../../assets/images/Google.png')}
+      />
+      <Text style={[styles.textButton, {color: colorObject.textButton}]}>Sign in with Google</Text>
+    </TouchableOpacity>
   );
 }
+
+
+const styles = StyleSheet.create({
+  button:{
+    width: '100%',
+    borderRadius: 12,
+    paddingVertical: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    columnGap: 10
+  },
+  textButton:{
+    fontWeight: 500,
+    fontSize: 16,
+    lineHeight: 24,
+    textAlign: 'center'
+  }
+})

@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "AppiFriends",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -19,6 +19,7 @@
     "@expo/vector-icons": "^14.0.2",
     "@gorhom/bottom-sheet": "^5.1.1",
     "@react-native-google-signin/google-signin": "^13.2.0",
+    "@react-native-masked-view/masked-view": "^0.2.8",
     "@react-navigation/bottom-tabs": "^7.2.0",
     "@react-navigation/elements": "^2.2.5",
     "@react-navigation/material-top-tabs": "^7.1.0",
@@ -54,6 +55,7 @@
     "react-native-reanimated": "^3.16.7",
     "react-native-safe-area-context": "^5.2.0",
     "react-native-screens": "^4.8.0",
+    "react-native-skeleton-placeholder": "^5.2.4",
     "react-native-web": "~0.19.13",
     "react-native-webview": "^13.13.2",
     "yup": "^1.6.1",

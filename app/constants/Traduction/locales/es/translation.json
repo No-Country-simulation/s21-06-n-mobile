@@ -1,8 +1,9 @@
 {
-  "welcome": "Bienvenido",
+  "welcome": "¡Únete Ahora!",
   "login": {
       "title" : "Iniciar sesión",
       "button" : "Iniciar sesión",
+      "description":"Haz conexiones reales sin presiones con personas que comparten tu estilo de vida. Encuentra tu tribu y vive nuevas experiencias.",
       "labels" : {
         "email" : "Correo electrónico",
         "password": "Contraseña"

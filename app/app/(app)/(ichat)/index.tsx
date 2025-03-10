@@ -10,10 +10,9 @@ const windowWidth = Dimensions.get('window').width;
 export default function Index() {
   const [messages, setMessages] = useState<any>([])
   const [loading, setLoading] = useState<boolean>(true);
+
   useEffect(() => {
     setTimeout(() => {
-
-
       setMessages([
         {
           _id: 1,
@@ -37,7 +36,7 @@ export default function Index() {
         },
       ])
       setLoading(false);
-    }, 3000)
+    }, 4000)
   }, [])
 
   const onSend = useCallback((messages: IMessage[] = []) => {
