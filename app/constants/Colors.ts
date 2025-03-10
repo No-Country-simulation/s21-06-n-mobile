@@ -26,7 +26,7 @@ export const Colors = {
     textTitle: '#13CAD6',
     text: '#fff',
     textInput: '#13CAD6',
-    textButton: '#000',
+    textButton: '#FFF',
     gradien: ['#33E4DB', '#00BBD3'],
     background: '#000',
     tint: tintColorDark,

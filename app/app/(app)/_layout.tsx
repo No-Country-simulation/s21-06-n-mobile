@@ -7,6 +7,7 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { useBottomSheetStore } from '@/store/bottomSheetStore';
 import { useConfiguration } from '@/hooks/useColorScheme';
+import Entypo from '@expo/vector-icons/Entypo';
 
 const AppLayout = () => {
     const { User, loading, loadUserData } = useAuthStore(state => state);
@@ -15,14 +16,14 @@ const AppLayout = () => {
     const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
     const { colorObject } = useConfiguration();
     useEffect(() => {
-        loadUserData(); 
-    }, []); 
+        loadUserData();
+    }, []);
 
     if (loading) {
-        return <ActivityIdicator />; 
+        return <ActivityIdicator />;
     }
 
-
+    console.log(User)
     if (!User) {
         console.log(User)
         console.log('volviendo a login')
@@ -30,10 +31,10 @@ const AppLayout = () => {
     }
 
     return (
-        <Tabs screenOptions={{tabBarActiveTintColor: colorObject.tabIconSelected}}>
-            <Tabs.Screen name="(home)" options={{
+        <Tabs screenOptions={{ tabBarActiveTintColor: colorObject.tabIconSelected }} initialRouteName='(home)'  >
+            <Tabs.Screen name="(home)" key={1} options={{
                 title: 'Home',
-                tabBarStyle:{
+                tabBarStyle: {
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
                 },
@@ -46,28 +47,37 @@ const AppLayout = () => {
                 },
                 headerRight: () => (
                     <View style={styles.iconContainer}>
-                        <TouchableOpacity onPress={() => console.log("Search pressed")}> 
+                        <TouchableOpacity onPress={() => console.log("Search pressed")}>
                             <Ionicons name="search" size={24} color={colorObject.text} />
                         </TouchableOpacity>
                         <TouchableOpacity onPress={() => isOpen ? closeBottomSheet() : openBottomSheet()}>
-                            <SimpleLineIcons name="equalizer" size={24} color={colorObject.text}/>
+                            <SimpleLineIcons name="equalizer" size={24} color={colorObject.text} />
                         </TouchableOpacity>
                     </View>
                 ),
-                tabBarIcon: ({focused}) => <FontAwesome size={28} name="home" color={focused ? colorObject.tabIconSelected : colorObject.text} />,
+                tabBarIcon: ({ focused }) => <FontAwesome size={28} name="home" color={focused ? colorObject.tabIconSelected : colorObject.text} />,
             }}
             />
+            <Tabs.Screen name='(ichat)'
+                options={{
+                    title: "Chat",
+                    headerShown: false,
+                    tabBarIcon: ({ focused }) =>  <Entypo name="chat" size={28} color={focused ? colorObject.tabIconSelected : colorObject.text} />
+                }}
+            />
+            
             <Tabs.Screen name='(profile)'
                 options={{
                     title: "Profile",
                     headerShown: false,
-                    tabBarIcon: ({focused}) => <FontAwesome size={28} name="user" color={focused ? colorObject.tabIconSelected : colorObject.text} />
+                    tabBarIcon: ({ focused }) =><FontAwesome size={28} name="user" color={focused ? colorObject.tabIconSelected : colorObject.text} />
                 }}
             />
-    
+
+
         </Tabs>
     )
-    
+
 }
 const styles = StyleSheet.create({
     iconContainer: {

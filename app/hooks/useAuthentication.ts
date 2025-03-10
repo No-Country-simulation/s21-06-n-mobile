@@ -5,7 +5,9 @@ import * as SecureStore from 'expo-secure-store';
 export const useAuth = () => {
     const loginValues: ILogin = { email: '', password: '' };
     const { setUser } = useAuthStore();
+
     const handleLogout = async () => {
+        console.log('delogeando')
         await SecureStore.deleteItemAsync('user')
         await setUser(null);
     };

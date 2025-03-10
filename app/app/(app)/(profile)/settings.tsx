@@ -1,6 +1,6 @@
 import { useConfiguration } from '@/hooks/useColorScheme';
 import React from 'react';
-import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { GestureResponderEvent, ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import Feather from '@expo/vector-icons/Feather';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
@@ -8,11 +8,14 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Foundation from '@expo/vector-icons/Foundation';
+import { useAuth } from '@/hooks/useAuthentication';
+import { router } from 'expo-router';
 
-type Option = {
+interface IOption {
     type: OptionType;
     label: string;
     icon: React.ReactNode;
+    onPress: ((event: GestureResponderEvent) => void) | undefined;
 };
 
 
@@ -30,26 +33,27 @@ enum OptionType {
 }
 
 
-const optionAccount: Option[] = [
-    { type: OptionType.EDIT_INFO, label: 'Editar información personal', icon: <MaterialIcons name="edit" size={20} color="black" /> },
-    { type: OptionType.CHANGE_PASSWORD, label: 'Cambiar contraseña', icon: <FontAwesome5 name="lock" size={20} color="black" /> },
-    { type: OptionType.NOTIFICATION, label: 'Notificaciones', icon: <Ionicons name="notifications-sharp" size={20} color="black" /> },
-    { type: OptionType.LANGUAGE, label: 'Idiomas', icon: <FontAwesome6 name="earth-americas" size={20} color="black" /> },
-    { type: OptionType.THEME, label: 'Modo oscuro', icon: <MaterialIcons name="dark-mode" size={20} color="black" /> },
+const optionAccount: IOption[] = [
+    { type: OptionType.EDIT_INFO, label: 'Editar información personal', icon: <MaterialIcons name="edit" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.CHANGE_PASSWORD, label: 'Cambiar contraseña', icon: <FontAwesome5 name="lock" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.NOTIFICATION, label: 'Notificaciones', icon: <Ionicons name="notifications-sharp" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.LANGUAGE, label: 'Idiomas', icon: <FontAwesome6 name="earth-americas" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.THEME, label: 'Modo oscuro', icon: <MaterialIcons name="dark-mode" size={20} color="black" />, onPress: undefined },
 ];
 
-const optionPrivacy: Option[] = [
-    { type: OptionType.PRIVACY, label: 'Administrar la visibilidad del perfil', icon: <MaterialCommunityIcons name="eye" size={20} color="black" /> },
-    { type: OptionType.USER_BLOCK, label: 'Usuarios bloqueados', icon: <FontAwesome5 name="user-slash" size={20} color="black" /> },
-    { type: OptionType.PRIVACY_VIEW, label: 'Controle quién puede ver su información', icon: <Foundation name="info" size={20} color="black" /> },
-    { type: OptionType.LOGOUT, label: 'Cerrar sesión', icon: <MaterialIcons name="logout" size={20} color="black" /> },
-    { type: OptionType.DELETE_ACCOUNT, label: 'Eliminar mi cuenta', icon: <MaterialIcons name="delete" size={20} color="black" /> },
+const optionPrivacy: IOption[] = [
+    { type: OptionType.PRIVACY, label: 'Administrar la visibilidad del perfil', icon: <MaterialCommunityIcons name="eye" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.USER_BLOCK, label: 'Usuarios bloqueados', icon: <FontAwesome5 name="user-slash" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.PRIVACY_VIEW, label: 'Controle quién puede ver su información', icon: <Foundation name="info" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.LOGOUT, label: 'Cerrar sesión', icon: <MaterialIcons name="logout" size={20} color="black" />, onPress: undefined },
+    { type: OptionType.DELETE_ACCOUNT, label: 'Eliminar mi cuenta', icon: <MaterialIcons name="delete" size={20} color="black" />, onPress: undefined },
 ];
 
-const OptionButton: React.FC<Option> = ({ label, icon }) => {
+const OptionButton: React.FC<IOption> = ({ label, icon, onPress }) => {
     const { colorObject } = useConfiguration();
+
     return (
-        <TouchableOpacity style={[styles.button]}>
+        <TouchableOpacity style={[styles.button]} onPress={onPress}>
             <View style={[styles.wrap]}>
                 {icon}
                 <Text style={[styles.text, { color: colorObject.text }]}>{label}</Text>
@@ -61,7 +65,7 @@ const OptionButton: React.FC<Option> = ({ label, icon }) => {
 
 const Settings = () => {
     const { colorObject } = useConfiguration();
-
+    const { handleLogout } = useAuth();
     return (
         <ScrollView
             style={[styles.container, { backgroundColor: colorObject.background }]}
@@ -70,13 +74,16 @@ const Settings = () => {
             <View style={[styles.sectionWrapper]}>
                 <Text style={[styles.titleSection, { color: colorObject.text }]}>Ajustes de la cuenta</Text>
                 {optionAccount.map((x, i) => (
-                    <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} />
+                    <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} onPress={undefined} />
                 ))}
             </View>
             <View style={[styles.sectionWrapper]}>
                 <Text style={[styles.titleSection, { color: colorObject.text }]}>Privacidad & configuración</Text>
                 {optionPrivacy.map((x, i) => (
-                    <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} />
+                    <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} onPress={x.type === OptionType.LOGOUT ? (() => { 
+                        handleLogout();
+                        router.push('/sign-in') 
+                    }) : undefined} />
                 ))}
             </View>
         </ScrollView>

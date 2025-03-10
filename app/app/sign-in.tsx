@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import React from 'react';
 import { Redirect } from 'expo-router';
 import { useAuthStore } from '@/store/useAuthStore';
@@ -16,21 +16,24 @@ const Login = () => {
 
   return (
     <View style={[styles.container, { backgroundColor: colorObject.background }]}>
+      <View>
+        <Image  source={require('../assets/images/ImageLogin.png')} />
+      </View>
       <View style={styles.titleContainer}>
         <Text style={[styles.title, { color: colorObject.text }]}>{t('welcome')}</Text>
         <Text style={[styles.text, { color: colorObject.text }]}>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Laboriosam enim, eum obcaecati tempora dicta, nemo illo accusantium nisi, nesciunt debitis voluptas doloremque autem impedit voluptatum nulla et? Eaque, omnis vel.
+          {t('login.description')}
         </Text>
       </View>
       {/* <View style={styles.formContain}>
         <FormLogin />
       </View> */}
-      {/* <View style={styles.OAuthContainer}>
+      <View style={styles.OAuthContainer}>
         <Text>{t("login.orSingUp")}</Text>
         <View style={styles.iconsContainer}>
           <GoogleLogin />
         </View>
-      </View> */}
+      </View>
     </View>
   );
 };
@@ -64,8 +67,9 @@ const styles = StyleSheet.create({
   },
   iconsContainer:{
     flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: 200,
+    alignItems:'center',
+    justifyContent: 'center',
+    width: '100%',
     marginTop: 20
   }
 });

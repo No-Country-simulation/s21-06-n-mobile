@@ -9,14 +9,13 @@ import { useConfiguration } from "@/hooks/useColorScheme";
 import GlobalBottomSheet from "@/components/BottomSheet/BottomSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-
 const Tab = createMaterialTopTabNavigator();
 
 export default function HomeLayout() {
     const { colorObject } = useConfiguration();
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-
+            
             <Tab.Navigator
                 tabIndex={0}
                 screenOptions={{
