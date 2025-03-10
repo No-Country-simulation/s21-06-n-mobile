@@ -5,6 +5,7 @@ import TypeConnection from '../TypeConnection/TypeConnection';
 import TypeGender from '../TypeGender/TypeGender';
 import TotalPeople from '../TotalPeople/TotalPeople';
 import LabelCategory from '../LabelCategory/LabelCategory';
+import { router } from 'expo-router';
 
 interface IContentInPersonProp {
     item: IEventItem,
@@ -41,17 +42,20 @@ const ContentInPerson = ({ item, showDate = false }: IContentInPersonProp) => {
                 ))}
             </View>
             <View>
-                <Text style={[styles.titleDescription]}>Introducción</Text>
-                <Text>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi vel dolorem ut, praesentium quo impedit consequatur eligendi vitae eveniet nemo ipsa, possimus illo officiis. Explicabo officia dicta rem suscipit placeat.</Text>
+                <Text style={[styles.titleDescription, {color: colorObject.text}]}>Introducción</Text>
+                <Text style={[{color: colorObject.text}]}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi vel dolorem ut, praesentium quo impedit consequatur eligendi vitae eveniet nemo ipsa, possimus illo officiis. Explicabo officia dicta rem suscipit placeat.</Text>
             </View>
             <View style={[styles.containRules]}>
-                <Text style={[styles.titleDescription]}>Reglas</Text>
+                <Text style={[styles.titleDescription, {color: colorObject.text}]}>Reglas</Text>
                 {items.map((item, index) => (
-                    <Text key={index} style={styles.listItem}>• {item}</Text>
+                    <Text key={index} style={[styles.listItem, {color: colorObject.text}]}>• {item}</Text>
                 ))}
             </View>
             <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]}>
                 <Text style={[styles.buttonText, { color: colorObject.textButton }]}>Ingresar al evento</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]} onPress={() => router.push(`/(app)/(ichat)?name=${item.title}`)}>
+                <Text style={[styles.buttonText, { color: colorObject.textButton }]}>Ver Chat</Text>
             </TouchableOpacity>
         </View>
     );

@@ -8,7 +8,6 @@ import Hybrid from "./Hybrid";
 import { useConfiguration } from "@/hooks/useColorScheme";
 import GlobalBottomSheet from "@/components/BottomSheet/BottomSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
-import Index from './(chat)/index';
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -59,7 +58,6 @@ export default function HomeLayout() {
                 <Tab.Screen name="Virtual" component={Virtual} options={{ title: "Virtual" }} />
                 <Tab.Screen name="InPerson" component={InPerson} options={{ title: "Presencial" }} />
                 <Tab.Screen name="Hybrid" component={Hybrid} options={{ title: "Hibrido" }} />
-                <Tab.Screen name="(chat)/index" component={Index} options={{ title: "Chat" }} />
             </Tab.Navigator>
             <GlobalBottomSheet />
         </GestureHandlerRootView>
