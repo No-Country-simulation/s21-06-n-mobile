@@ -23,7 +23,7 @@ const AppLayout = () => {
         return <ActivityIdicator />;
     }
 
-
+    console.log(User)
     if (!User) {
         console.log(User)
         console.log('volviendo a login')

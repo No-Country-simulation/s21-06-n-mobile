@@ -9,7 +9,7 @@ import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 // Inicializa traducciones
 i18nextConfig.initalizeI18Next();
-// GoogleSignin.configure();
+GoogleSignin.configure();
 
 export default function RootLayout() {
     const { t, colorObject, colorScheme } = useConfiguration();
