@@ -11,10 +11,11 @@ const ProfileLayout = () => {
                 statusBarBackgroundColor: colorObject.background,
                 statusBarHidden: false,
                 statusBarTranslucent: true,
-                headerShown: false
+                headerShown: false,
             }}
         >
             <Stack.Screen name="index" options={{ headerShown: true, headerTitle: 'Mi Perfil' }} />
+            <Stack.Screen name="settings" options={{headerShown: true, headerTitle: 'Configuración'}} />
         </Stack>
     );
 }
