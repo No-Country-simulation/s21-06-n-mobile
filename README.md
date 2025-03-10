@@ -32,7 +32,7 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 **Enlaces:**
 
 [![FIGMA](https://img.shields.io/badge/figma-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/design/opTZeA1mcMUSNyumOxG7Db/UI-Design?node-id=440-7058&t=qFoYGaZBZW5HLRBL-1>)
-[![Notion](https://img.shields.io/badge/Notion-9C55F7?style=for-the-badge&logo=notion&logoColor=white)]
+[![Notion](https://img.shields.io/badge/Notion-9C55F7?style=for-the-badge&logo=notion&logoColor=white)](<https://albbasanchez.notion.site/Equipo-s21-06-n-mobile-19f0e0304b30801189d1f5f5e5daf356?pvs=4>)
 [![Aplicacion]( )
 
 
