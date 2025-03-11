@@ -103,7 +103,7 @@ npm run dev  # Iniciar el cliente
 
 <table align="center">
   <tr>
-    <td align="center">Juan Hernandez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
+    <td align="center">Juan Hernandez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/18169.jpg" width="16" /></td>
     <td align="center">Styfferson Castro <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ve.png" width="16" /></td>
   </tr>
   <tr>
