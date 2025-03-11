@@ -33,7 +33,7 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 
 [![FIGMA](https://img.shields.io/badge/figma-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/design/opTZeA1mcMUSNyumOxG7Db/UI-Design?node-id=440-7058&t=qFoYGaZBZW5HLRBL-1>)
 [![Notion](https://img.shields.io/badge/Notion-9C55F7?style=for-the-badge&logo=notion&logoColor=white)](<https://albbasanchez.notion.site/Equipo-s21-06-n-mobile-19f0e0304b30801189d1f5f5e5daf356?pvs=4>)
-[![aplicación](https://img.shields.io/Applicación?url=https%3A%2F%2Ffipe.cl&style=for-the-badge)](<https://expo.dev/accounts/exequiel65/projects/app/builds/f8c3f120-ec4e-4ac0-ab35-6417df7f6c8b>)
+[![aplicación](https://img.shields.io/badge/Applicación?url=https%3A%2F%2Ffipe.cl&style=for-the-badge)](<https://expo.dev/accounts/exequiel65/projects/app/builds/f8c3f120-ec4e-4ac0-ab35-6417df7f6c8b>)
 
 
 
