@@ -1,4 +1,4 @@
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';

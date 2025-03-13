@@ -1,4 +1,4 @@
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import { router, Stack } from 'expo-router';
 import React from 'react';
 import Ionicons from '@expo/vector-icons/Ionicons';
@@ -11,13 +11,13 @@ const ProfileLayout = () => {
             <Stack.Screen name="index" options={{
                 headerShown: true, headerTitle: t("profile.title"),
                 headerRight: () => <View style={styles.iconContainer}>
-                    <TouchableOpacity onPress={() => router.push('/settings')}>
+                    <TouchableOpacity onPress={() => router.push('/(app)/(profile)/(settings)')}>
                         <Ionicons name="settings" size={24} color={colorObject.text} />
                     </TouchableOpacity>
                 </View>
             }} />
-            <Stack.Screen name="settings" options={{
-                headerShown: true, headerTitle: t("settings.title")
+            <Stack.Screen name="(settings)" options={{
+                headerShown: false,
             }} />
         </Stack>
     );

@@ -1,4 +1,4 @@
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import TypeConnection from '../TypeConnection/TypeConnection';
@@ -24,12 +24,14 @@ const ContentInPerson = ({ item, showDate = false, onClose }: IContentInPersonPr
                 <Show.When isTrue={item.banner !== "" && item.banner !== undefined && item.banner !== null}>
                     <View style={[styles.banner]}>
                         <ImageCustom imageStyle={{ flex: 1, width: '100%', borderRadius: 20 }} viewStyle={styles.banner} url={item.banner} />
-                        <Text style={styles.dateText}>
-                            {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
-                        </Text>
-                        <Text style={styles.dateText}>
-                            {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
-                        </Text>
+                        <View style={styles.dateContainer}>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
+                            </Text>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
+                            </Text>
+                        </View>
                     </View>
 
                 </Show.When>

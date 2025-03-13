@@ -6,7 +6,7 @@ import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Ionicons, SimpleLineIcons } from '@expo/vector-icons';
 import { useBottomSheetStore } from '@/store/bottomSheetStore';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import Entypo from '@expo/vector-icons/Entypo';
 
 const AppLayout = () => {

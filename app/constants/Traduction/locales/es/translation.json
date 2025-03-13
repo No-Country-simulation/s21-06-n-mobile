@@ -1,4 +1,6 @@
 {
+    "es": "Español",
+    "en": "Ingles",
     "welcome": "¡Únete Ahora!",
     "login": {
         "title": "Iniciar sesión",
@@ -132,6 +134,15 @@
             "PRIVACY_VIEW": "Controlar quién puede ver su información",
             "LOGOUT": "Cerrar sesión",
             "DELETE_ACCOUNT": "Eliminar mi cuenta"
+        },
+        "language":{
+            "title": "Cambiar Idioma"
+        },
+        "theme":{
+            "title": "Cambiar tema",
+            "subtitle": "Selecciona tu tema",
+            "dark": "Modo Oscuro",
+            "light": "Modo Claro"
         }
     }
 }

@@ -7,7 +7,6 @@ export const useAuth = () => {
     const { setUser } = useAuthStore();
 
     const handleLogout = async () => {
-        console.log('delogeando')
         await SecureStore.deleteItemAsync('user')
         await setUser(null);
     };

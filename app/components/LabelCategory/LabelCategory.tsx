@@ -1,4 +1,4 @@
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 

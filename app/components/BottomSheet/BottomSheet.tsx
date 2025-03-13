@@ -5,7 +5,7 @@ import { useBottomSheetStore } from '../../store/bottomSheetStore';
 import { Categories } from '@/mock/Events';
 import { useEventStore } from '@/store/useEventStore';
 import ActivityIndicator from '../Loading/ActivityIdicator';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import Show from '../Show/Show';
 import { useTranslation } from 'react-i18next'; // Importar el hook de traducción
 

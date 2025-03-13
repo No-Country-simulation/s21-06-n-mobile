@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import { useAuth } from '@/hooks/useAuthentication';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 
 export default function GoogleLogin() {
   const { colorObject, t} = useConfiguration();
@@ -13,19 +13,14 @@ export default function GoogleLogin() {
   const signIn = async () => {
     try {
       var s = await GoogleSignin.hasPreviousSignIn();
-      
-      console.log(s);
       if (s) {
         await GoogleSignin.signOut();
-        console.log('deslogueo')
       }
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo?.data?.user);
      
       if (userInfo.data?.user) {
         var e = await GoogleSignin.getTokens();
-        console.log(e.accessToken)
         await handleLogin(userInfo.data.user)
       }
      

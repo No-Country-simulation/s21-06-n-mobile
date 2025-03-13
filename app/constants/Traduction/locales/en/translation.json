@@ -1,4 +1,6 @@
 {
+  "es": "Spanish",
+  "en": "English",
   "welcome": "Join Now!",
   "login": {
     "title": "Login",
@@ -132,6 +134,14 @@
       "PRIVACY_VIEW": "Control Who Can See Your Information",
       "LOGOUT": "Log Out",
       "DELETE_ACCOUNT": "Delete My Account"
+    },
+    "language":{
+        "title": "Change language"
+    },
+    "theme":{
+        "title": "Change theme",
+            "subtitle": "Selecciona tu tema"
     }
+    
   }
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { Dimensions, PixelRatio, StyleSheet, Text, View } from 'react-native';
 import Show from '../Show/Show';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 
 interface ITypeGenderProp {
     gender: string;

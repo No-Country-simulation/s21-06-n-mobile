@@ -4,7 +4,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 import React, { useState, useCallback, useEffect } from 'react';
 import { Dimensions, StyleSheet, View, Text, Image } from 'react-native';
 import { GiftedChat, IMessage, InputToolbar, Send } from 'react-native-gifted-chat';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import { useLocalSearchParams } from 'expo-router';
 import { EventChats } from '@/mock/Events';
 

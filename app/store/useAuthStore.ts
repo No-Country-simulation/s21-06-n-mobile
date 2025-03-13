@@ -25,7 +25,6 @@ export const useAuthStore = create<IAuthStore>((set) => ({
     set({ loading: true });
     try {
       const storedUser = await SecureStore.getItemAsync('user');
-      console.log(storedUser)
       if (storedUser) {
         set({ User: JSON.parse(storedUser), loading: false });
       }else{

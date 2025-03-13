@@ -3,7 +3,7 @@ import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import ContentInPerson from '@/components/Modal/ContentInPerson';
 import ModalComponent from '@/components/Modal/ModalComponent';
 import Show from '@/components/Show/Show';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import { useEventStore } from '@/store/useEventStore';
 import React, { useEffect, useState } from 'react';
 import { SectionList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';

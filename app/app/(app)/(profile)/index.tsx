@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Dimensions, Image } from 'react-native';
 import LabelCategory from '@/components/LabelCategory/LabelCategory';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import { router } from 'expo-router';
 import { useAuthStore } from '@/store/useAuthStore';
 import Show from '@/components/Show/Show';

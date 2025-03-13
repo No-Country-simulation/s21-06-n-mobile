@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import CardChat from '@/components/Cards/CardChat';
 import { useAuth } from '@/hooks/useAuthentication';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import Show from '@/components/Show/Show';
 import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import { useEventStore } from '@/store/useEventStore';
@@ -19,7 +19,6 @@ const Index = () => {
 
     useEffect(() => {
         if (events.length === 0 && !loading) {
-            console.log('📌 Primera carga de eventos...');
             loadEventsWithFilter(filterCategories);
         }
     }, []);
@@ -28,8 +27,6 @@ const Index = () => {
         setSelectedEvent(event);
         setModalVisible(true);
     };
-
-    console.log('📌 Renderizando componente...');
     return (
         <>
             <Show>

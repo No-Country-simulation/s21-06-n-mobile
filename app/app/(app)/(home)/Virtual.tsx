@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import CardChat from '@/components/Cards/CardChat';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import Show from '@/components/Show/Show';
 import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import { useEventStore } from '@/store/useEventStore';

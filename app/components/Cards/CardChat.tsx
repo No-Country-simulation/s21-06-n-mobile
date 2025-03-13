@@ -1,4 +1,4 @@
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import React from 'react';
 import { Dimensions, Image, PixelRatio, StyleSheet, Text, View } from 'react-native';
 import LabelCategory from '../LabelCategory/LabelCategory';

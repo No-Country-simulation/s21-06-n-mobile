@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Dimensions, PixelRatio } from 'react-native';
 import React from 'react';
 import Show from '../Show/Show';
 import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 

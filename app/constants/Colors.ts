@@ -11,7 +11,7 @@ export const Colors = {
         background: '#fff',
         tint: tintColorLight,
         icon: '#687076',
-        tabIconDefault: '##000000',
+        tabIconDefault: '#000000',
         tabIconSelected: tintColorLight,
         cardBackground: '#fff',
         buttonBackground: '#7B61FF',
@@ -22,9 +22,13 @@ export const Colors = {
         inputBackground: '#F0F0F0', // Fondo del input de texto
         placeholderText: '#888', // Color del texto de placeholder
         chatBubbleBackground: '#E0E0E0',
-        skeletonBackground: '#E0E0E0',
+        skeletonBackground: '#000',
         skeletonHighlight: '#F0F0F0',
         inputToolbarBackground: '#F0F0F0',
+        selectedOption:{
+            borderColor: '#6200ee',
+            backgroundColor: '#7B61FF',
+        }
     },
     dark: {
         textTitle: '#13CAD6',
@@ -49,5 +53,9 @@ export const Colors = {
         skeletonBackground: '#333', // Fondo del skeleton en modo oscuro
         skeletonHighlight: '#444',
         inputToolbarBackground: '#222',
+        selectedOption:{
+            borderColor: '#6200ee',
+            backgroundColor: '#7B61FF',
+        }
     },
 };

@@ -34,7 +34,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/Logox2.png",
-          "imageWidth": 250,
+          "imageWidth": 600,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }

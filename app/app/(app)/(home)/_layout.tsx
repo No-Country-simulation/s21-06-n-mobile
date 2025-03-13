@@ -5,7 +5,7 @@ import Agenda from "./Agenda";
 import Virtual from "./Virtual";
 import InPerson from "./InPerson";
 import Hybrid from "./Hybrid";
-import { useConfiguration } from "@/hooks/useColorScheme";
+import { useConfiguration } from "@/hooks/useConfiguration";
 import GlobalBottomSheet from "@/components/BottomSheet/BottomSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 

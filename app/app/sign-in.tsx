@@ -4,7 +4,7 @@ import { Redirect } from 'expo-router';
 import { useAuthStore } from '@/store/useAuthStore';
 import FormLogin from '@/components/Form/FormLogin';
 import GoogleLogin from '@/components/OAuth/GoogleLogin';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 
 const Login = () => {
   const {User}  = useAuthStore(state => state);
@@ -42,7 +42,6 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20,
     alignItems: 'center',
-    marginTop: 50
   },
   titleContainer: {
     width: '90%',
