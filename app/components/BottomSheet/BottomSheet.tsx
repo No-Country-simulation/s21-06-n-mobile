@@ -1,20 +1,46 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo, useCallback } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import { Text, TouchableOpacity, StyleSheet, View, FlatList } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, ScrollView, Image } from 'react-native';
 import { useBottomSheetStore } from '../../store/bottomSheetStore';
 import { Categories } from '@/mock/Events';
 import { useEventStore } from '@/store/useEventStore';
-import ActivityIdicator from '../Loading/ActivityIdicator';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import ActivityIndicator from '../Loading/ActivityIdicator';
+import { useConfiguration } from '@/hooks/useConfiguration';
+import Show from '../Show/Show';
+import { useTranslation } from 'react-i18next'; // Importar el hook de traducción
 
-export default function GlobalBottomSheet() {
+type Category = {
+    id: string;
+    type: string;
+    options: string[];
+};
+
+type CategoryIconProps = {
+    type: string;
+};
+
+const CategoryIcon: React.FC<CategoryIconProps> = ({ type }) => {
+    const iconSource = useMemo(() => ({
+        ARTE: require('../../assets/images/Art.png'),
+        GYM: require('../../assets/images/Gym.png'),
+        SOCIAL: require('../../assets/images/Pizza.png'),
+    }), []);
+
+    return (
+        <Image
+            style={styles.categoryIcon}
+            source={iconSource[type as keyof typeof iconSource]}
+        />
+    );
+};
+
+const GlobalBottomSheet: React.FC = () => {
     const bottomSheetRef = useRef<BottomSheet>(null);
-    const isOpen = useBottomSheetStore(state => state.isOpen);
-    const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
-    const { filterCategories, setFilterCategories, loadEventsWithFilter } = useEventStore();
+    const isOpen = useBottomSheetStore((state) => state.isOpen);
+    const closeBottomSheet = useBottomSheetStore((state) => state.closeBottomSheet);
+    const { selectedFilters, setSelectedFilters, loadEventsWithFilter } = useEventStore();
     const { colorObject } = useConfiguration();
-
-
+    const { t } = useTranslation(); // Hook de traducción
 
     useEffect(() => {
         if (isOpen) {
@@ -24,98 +50,131 @@ export default function GlobalBottomSheet() {
         }
     }, [isOpen]);
 
+    const handleApplyFilters = useCallback(() => {
+        loadEventsWithFilter(selectedFilters);
+        closeBottomSheet();
+    }, [selectedFilters, loadEventsWithFilter, closeBottomSheet]);
 
-    const applyFilters = () => {
-        loadEventsWithFilter(filterCategories); 
-        closeBottomSheet(); 
-    };
+    const handleResetFilters = useCallback(() => {
+        setSelectedFilters([]);
+        loadEventsWithFilter([]);
+        closeBottomSheet();
+    }, [setSelectedFilters, loadEventsWithFilter, closeBottomSheet]);
 
+    const handleFilterToggle = useCallback((option: string) => {
+        const updatedFilters = selectedFilters.includes(option)
+            ? selectedFilters.filter((item) => item !== option)
+            : [...selectedFilters, option];
+        setSelectedFilters(updatedFilters);
+    }, [selectedFilters, setSelectedFilters]);
 
-    const toggleFilter = (category: string, option: string) => {
-        let filter = filterCategories;
-        if(filterCategories.includes(option)){
-            filter = filterCategories.filter(x => x !== option)
-        }else{
-            filter.push(option)   
-        }
-        setFilterCategories(filter)
-    };
-    
-
-
-    const renderFilterOptions = (category: string, options: string[]) => (
+    const renderFilterOptions = useCallback((options: string[]) => (
         <View style={styles.optionsContainer}>
-            {options.map(option => (
-                <TouchableOpacity key={option} onPress={() => toggleFilter(category, option)}>
+            {options.map((option) => (
+                <TouchableOpacity
+                    key={option}
+                    onPress={() => handleFilterToggle(option)}
+                >
                     <View
                         style={[
                             styles.optionBox,
-                            filterCategories.includes(option) && styles.selectedOption,
+                            selectedFilters.includes(option) && styles.selectedOption,
                         ]}
                     >
                         <Text
                             style={[
                                 styles.optionText,
-                                filterCategories.includes(option) && styles.selectedText,
+                                selectedFilters.includes(option) && styles.selectedText,
                             ]}
                         >
-                            {option}
+                            {t(`bottomSheet.options.${option}`)} {/* Traducción dinámica */}
                         </Text>
                     </View>
                 </TouchableOpacity>
             ))}
         </View>
-    );
+    ), [selectedFilters, handleFilterToggle, t]);
 
-    if (filterCategories === undefined) {
-        return <ActivityIdicator />
+    if (selectedFilters === undefined) {
+        return <ActivityIndicator />;
     }
 
     return (
         <BottomSheet
             index={-1}
             ref={bottomSheetRef}
-            snapPoints={['25%', '50%', '90%']}
+            snapPoints={['50%', '90%']}
             enablePanDownToClose={true}
+            enableContentPanningGesture={false}
             onClose={closeBottomSheet}
         >
-            <BottomSheetView style={styles.contentContainer}>
-                <Text style={styles.title}>Filtros de búsqueda</Text>
-                <FlatList
-                    data={Categories}
-                    keyExtractor={item => item.category}
-                    renderItem={({ item }) => (
-                        <View style={styles.filterContainer}>
-                            <Text style={styles.filterTitle}>{item.category}</Text>
-                            {renderFilterOptions(item.category, item.options)}
+            <BottomSheetView style={styles.container}>
+                <Text style={styles.headerTitle}>{t('bottomSheet.title')}</Text>
+                <ScrollView>
+                    {Categories.map((item: Category) => (
+                        <View key={item.id} style={styles.categoryContainer}>
+                            <View style={styles.categoryHeader}>
+                                <Show>
+                                    <Show.When isTrue={item.type === 'ARTE' || item.type === 'GYM' || item.type === 'SOCIAL'}>
+                                        <CategoryIcon type={item.type} />
+                                    </Show.When>
+                                </Show>
+                                <Text style={styles.categoryTitle}>
+                                    {t(`bottomSheet.${item.type}`)} {/* Traducción dinámica */}
+                                </Text>
+                            </View>
+                            {renderFilterOptions(item.options)}
                         </View>
-                    )}
-                />
-                <TouchableOpacity style={[styles.applyButton, {backgroundColor: colorObject.buttonBackground}]} onPress={applyFilters}>
-                    <Text style={styles.applyButtonText}>Confirmar filtros</Text>
-                </TouchableOpacity>
+                    ))}
+                </ScrollView>
+                <View style={styles.buttonWrapper}>
+                    <TouchableOpacity
+                        style={[styles.applyButton, { backgroundColor: colorObject.buttonBackground }]}
+                        onPress={handleApplyFilters}
+                    >
+                        <Text style={styles.applyButtonText}>{t('bottomSheet.buttonConfirm')}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.resetButton, { borderColor: 'black', borderWidth: 1  }]}
+                        onPress={handleResetFilters}
+                    >
+                        <Text style={[styles.resetButtonText, { color: 'black'}]}>
+                            {t('bottomSheet.resetButton')}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </BottomSheetView>
         </BottomSheet>
     );
-}
+};
 
 const styles = StyleSheet.create({
-    contentContainer: {
+    container: {
         flex: 1,
         padding: 20,
     },
-    title: {
+    headerTitle: {
         fontSize: 18,
         fontWeight: '500',
         marginBottom: 20,
     },
-    filterContainer: {
+    categoryContainer: {
         marginBottom: 20,
     },
-    filterTitle: {
+    categoryHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    categoryTitle: {
         fontSize: 16,
         fontWeight: '500',
-        marginBottom: 10,
+        marginLeft: 10,
+    },
+    categoryIcon: {
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
     },
     optionsContainer: {
         flexDirection: 'row',
@@ -141,12 +200,15 @@ const styles = StyleSheet.create({
     selectedText: {
         color: '#000',
     },
-    applyButton: {
+    buttonWrapper: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
         marginTop: 20,
-        backgroundColor: '#1C1B1F',
+    },
+    applyButton: {
         paddingVertical: 14,
         borderRadius: 12,
-        width: '100%',
+        width: '48%',
         alignItems: 'center',
     },
     applyButtonText: {
@@ -154,4 +216,17 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontWeight: 'bold',
     },
+    resetButton: {
+        paddingVertical: 14,
+        borderRadius: 12,
+        width: '48%',
+        alignItems: 'center',
+        borderWidth: 1,
+    },
+    resetButtonText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
 });
+
+export default GlobalBottomSheet;

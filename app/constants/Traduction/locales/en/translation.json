@@ -1,13 +1,16 @@
 {
-  "welcome": "Join now!",
+  "es": "Spanish",
+  "en": "English",
+  "welcome": "Join Now!",
   "login": {
-    "title": "Log In",
-    "button": "Log In",
-    "description":"Make real, pressure-free connections with people who share your lifestyle. Find your tribe and live new experiences.",
+    "title": "Login",
+    "button": "Login",
+    "description": "Make real connections without pressure with people who share your lifestyle. Find your tribe and live new experiences.",
     "labels": {
       "email": "Email",
       "password": "Password"
     },
+    "googleSignIn": "Sign in with Google",
     "errors": {
       "email": {
         "invalidEmail": "Invalid email format",
@@ -15,7 +18,7 @@
       },
       "password": {
         "min": "Must be at least 8 characters",
-        "max": "Cannot be more than 50 characters",
+        "max": "Cannot be longer than 50 characters",
         "required": "Password is required",
         "letterLower": "Password must contain at least one lowercase letter",
         "letterUpper": "Password must contain at least one uppercase letter",
@@ -23,5 +26,122 @@
         "specialCharacter": "Password must contain at least one special character"
       }
     }
+  },
+  "notFound": {
+    "emptyEvents": "You have no events....."
+  },
+  "type": {
+    "location": {
+      "IN_PERSON": "In Person",
+      "VIRTUAL": "Virtual",
+      "HYBRID": "Hybrid"
+    },
+    "gender": {
+      "M": "Male",
+      "F": "Female"
+    }
+  },
+  "nav": {
+    "topNav": {
+      "forYou": "For You",
+      "agenda": "Agenda",
+      "virtual": "Virtual",
+      "inPerson": "In Person",
+      "hybrid": "Hybrid"
+    },
+    "tabNav": {
+      "home": "Home",
+      "profile": "Profile"
+    }
+  },
+  "agenda": {
+    "today": "Today",
+    "tomorrow": "Tomorrow",
+    "proxy": "Coming Soon"
+  },
+  "bottomSheet": {
+    "title": "Search Filters",
+    "ARTE": "Arts and Interests",
+    "GYM": "Sports",
+    "SOCIAL": "Social and Lifestyle",
+    "TECHNOLOGY": "Technology",
+    "buttonConfirm": "Confirm Filters",
+    "resetButton": "Reset",
+    "options": {
+            "ART_1": "Art",
+            "ART_2": "Culture",
+            "ART_3": "Music",
+            "ART_4": "Painting",
+            "ART_5": "Theater",
+            "ART_6": "Acting",
+            "ART_7": "Dance",
+            "ART_8": "Writing",
+            "ART_9": "Poetry",
+            "ART_10": "Video Games",
+            "GYM_1": "Soccer",
+            "GYM_2": "Basketball",
+            "GYM_3": "Tennis",
+            "GYM_4": "Yoga",
+            "GYM_5": "Running",
+            "GYM_6": "Health",
+            "SOCIAL_1": "Food",
+            "SOCIAL_2": "Travel",
+            "SOCIAL_3": "Outings",
+            "SOCIAL_4": "Culture",
+            "SOCIAL_5": "Fashion",
+            "SOCIAL_6": "Trends",
+            "SOCIAL_7": "Meditation",
+            "SOCIAL_8": "Wellness",
+            "TECH_1": "Development",
+            "TECH_2": "Virtual",
+            "TECH_3": "Cybersecurity",
+            "TECH_4": "Hacking",
+            "TECH_5": "AI",
+            "TECH_6": "Machine Learning",
+            "TECH_7": "Blockchain",
+            "TECH_8": "Cryptocurrencies",
+            "TECH_9": "Programming",
+            "TECH_10": "Web"
+        }
+  },
+  "introduction": "Introduction",
+  "rules": "Rules",
+  "modalEvent": {
+    "buttonSubscribeEvent": "Join Event",
+    "viewChat": "View Chat"
+  },
+  "profile": {
+    "title": "My profile",
+    "aboutMe": "About Me",
+    "interests": "My Interests",
+    "gallery": "My Gallery",
+    "buttonEditProfile": "Edit Profile"
+  },
+  "settings": {
+    "title": "Settings",
+    "account": {
+      "title": "Account Settings",
+      "EDIT_INFO": "Edit Personal Information",
+      "CHANGE_PASSWORD": "Change Password",
+      "NOTIFICATION": "Notifications",
+      "LANGUAGE": "Language",
+      "THEME": "Dark Mode"
+    },
+    "privacy": {
+      "title": "Privacy & Settings",
+      "PRIVACY": "Manage Profile Visibility",
+      "USER_BLOCK": "Blocked Users",
+      "PRIVACY_VIEW": "Control Who Can See Your Information",
+      "LOGOUT": "Log Out",
+      "DELETE_ACCOUNT": "Delete My Account"
+    },
+    "language":{
+        "title": "Change language"
+    },
+    "theme":{
+        "title": "Change theme",
+            "subtitle": "Selecciona tu tema"
+    }
+    
   }
 }

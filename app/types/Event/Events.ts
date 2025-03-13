@@ -8,6 +8,9 @@ interface IEventItem {
     type: string,
     gender: string,
     totalPeople: number,
+    banner: string,
+    description:string,
+    rules: string[]
 }
 
 interface ISection {

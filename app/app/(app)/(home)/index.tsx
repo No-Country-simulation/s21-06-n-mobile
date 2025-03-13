@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import CardChat from '@/components/Cards/CardChat';
 import { useAuth } from '@/hooks/useAuthentication';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import Show from '@/components/Show/Show';
 import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import { useEventStore } from '@/store/useEventStore';
@@ -10,16 +10,15 @@ import ModalComponent from '@/components/Modal/ModalComponent';
 import ContentInPerson from '@/components/Modal/ContentInPerson';
 
 const Index = () => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     const { handleLogout } = useAuth();
-    const { events, filterCategories, loading, loadEventsWithFilter } = useEventStore();
+    const { events, selectedFilters: filterCategories, loading, loadEventsWithFilter } = useEventStore();
     const [isModalVisible, setModalVisible] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<IEventItem | null>(null);
     const keyExtractor = (item: IEventItem, index: number): string => `${item.id}-${index}`;
 
     useEffect(() => {
         if (events.length === 0 && !loading) {
-            console.log('📌 Primera carga de eventos...');
             loadEventsWithFilter(filterCategories);
         }
     }, []);
@@ -28,8 +27,6 @@ const Index = () => {
         setSelectedEvent(event);
         setModalVisible(true);
     };
-
-    console.log('📌 Renderizando componente...');
     return (
         <>
             <Show>
@@ -56,7 +53,7 @@ const Index = () => {
                     </View>
                 </Show.When>
                 <Show.Else>
-                    <View><Text style={{ color: colorObject.text }}>No hay eventos...</Text></View>
+                    <View><Text style={{ color: colorObject.text }}>{t("notFound.emptyEvents")}</Text></View>
                 </Show.Else>
             </Show>
 
@@ -65,7 +62,7 @@ const Index = () => {
                 visible={isModalVisible}
                 onClose={() => setModalVisible(false)}
             >
-                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={false} />}
+                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={false} onClose={() => setModalVisible(false)} />}
             </ModalComponent>
 
         </>

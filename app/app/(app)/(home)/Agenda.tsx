@@ -3,18 +3,16 @@ import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import ContentInPerson from '@/components/Modal/ContentInPerson';
 import ModalComponent from '@/components/Modal/ModalComponent';
 import Show from '@/components/Show/Show';
-import { useAuth } from '@/hooks/useAuthentication';
-import { useConfiguration } from '@/hooks/useColorScheme';
+import { useConfiguration } from '@/hooks/useConfiguration';
 import { useEventStore } from '@/store/useEventStore';
 import React, { useEffect, useState } from 'react';
 import { SectionList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 const Agenda = () => {
-    const { colorObject } = useConfiguration();
-    const { handleLogout } = useAuth();
+    const { colorObject, t } = useConfiguration();
     const [section, setSection] = useState<ISection[]>([]);
     const [loadingSection, setLoadingSection] = useState<boolean>(false);
-    const { events, loading, loadEventsWithFilter, filterCategories } = useEventStore();
+    const { events, loadEventsWithFilter, selectedFilters: filterCategories } = useEventStore();
     const [isModalVisible, setModalVisible] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<IEventItem | null>(null);
 
@@ -45,9 +43,9 @@ const Agenda = () => {
         setLoadingSection(true);
 
         let data = [
-            { title: 'Hoy', data: eventList.filter(event => event.date.toDateString() === today.toDateString()) },
-            { title: 'Mañana', data: eventList.filter(event => event.date.toDateString() === tomorrow.toDateString()) },
-            { title: 'Próximamente', data: eventList.filter(event => event.date > tomorrow) },
+            { title: t("agenda.today"), data: eventList.filter(event => event.date.toDateString() === today.toDateString()) },
+            { title: t("agenda.tomorrow"), data: eventList.filter(event => event.date.toDateString() === tomorrow.toDateString()) },
+            { title: t("agenda.proxy"), data: eventList.filter(event => event.date > tomorrow) },
         ].filter(section => section.data.length > 0);
 
         setSection(data);
@@ -73,9 +71,9 @@ const Agenda = () => {
                                 <Text style={[styles.sectionHeader, { color: colorObject.text }]}>{title}</Text>
                             )}
                             renderItem={({ item }) => (
-                                 <TouchableOpacity style={styles.cardWrapper} onPress={() => handleOpenModal(item)}>
+                                <TouchableOpacity style={styles.cardWrapper} onPress={() => handleOpenModal(item)}>
                                     <CardAgenda item={item} />
-                                 </TouchableOpacity>
+                                </TouchableOpacity>
                             )}
                         />
                     </View>
@@ -83,7 +81,7 @@ const Agenda = () => {
                 </Show.When>
                 <Show.Else>
                     <View>
-                        <Text style={{ color: '#FFF' }}>No tienes eventos</Text>
+                        <Text style={{ color: '#FFF' }}>{t("notFound.emptyEvents")}</Text>
                     </View>
                 </Show.Else>
             </Show>
@@ -91,7 +89,7 @@ const Agenda = () => {
                 visible={isModalVisible}
                 onClose={() => setModalVisible(false)}
             >
-                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={true} />}
+                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={true} onClose={() => setModalVisible(false)} />}
             </ModalComponent>
         </>
 

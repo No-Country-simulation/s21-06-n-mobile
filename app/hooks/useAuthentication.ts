@@ -7,15 +7,13 @@ export const useAuth = () => {
     const { setUser } = useAuthStore();
 
     const handleLogout = async () => {
-        console.log('delogeando')
         await SecureStore.deleteItemAsync('user')
         await setUser(null);
     };
 
-    const handleLogin = async (values: ILogin) => {
+    const handleLogin = async (values: IUser) => {
         console.log(values);
-        const userData = { id: '1', email: values.email };
-        await setUser(userData);
+        await setUser(values);
     };
 
     return {

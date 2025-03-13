@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "AppiFriends",
-    "slug": "AppiFriends",
+    "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/Logo.png",
@@ -34,7 +34,7 @@
         "expo-splash-screen",
         {
           "image": "./assets/images/Logox2.png",
-          "imageWidth": 250,
+          "imageWidth": 600,
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }

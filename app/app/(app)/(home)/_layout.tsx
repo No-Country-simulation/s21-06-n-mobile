@@ -5,17 +5,17 @@ import Agenda from "./Agenda";
 import Virtual from "./Virtual";
 import InPerson from "./InPerson";
 import Hybrid from "./Hybrid";
-import { useConfiguration } from "@/hooks/useColorScheme";
+import { useConfiguration } from "@/hooks/useConfiguration";
 import GlobalBottomSheet from "@/components/BottomSheet/BottomSheet";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 const Tab = createMaterialTopTabNavigator();
 
 export default function HomeLayout() {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            
+
             <Tab.Navigator
                 tabIndex={0}
                 screenOptions={{
@@ -50,14 +50,15 @@ export default function HomeLayout() {
                     tabBarItemStyle: {
                         paddingHorizontal: 0,
                     },
+                    swipeEnabled: false,
                 }}
 
             >
-                <Tab.Screen name="index" component={index} options={{ title: "Para Ti" }} />
-                <Tab.Screen name="Agenda" component={Agenda} options={{ title: "Agenda" }} />
-                <Tab.Screen name="Virtual" component={Virtual} options={{ title: "Virtual" }} />
-                <Tab.Screen name="InPerson" component={InPerson} options={{ title: "Presencial" }} />
-                <Tab.Screen name="Hybrid" component={Hybrid} options={{ title: "Hibrido" }} />
+                <Tab.Screen name="index" component={index} options={{ title: t("nav.topNav.forYou") }} />
+                <Tab.Screen name="Agenda" component={Agenda} options={{ title: t("nav.topNav.agenda") }} />
+                <Tab.Screen name="Virtual" component={Virtual} options={{ title: t("nav.topNav.virtual") }} />
+                <Tab.Screen name="InPerson" component={InPerson} options={{ title: t("nav.topNav.inPerson") }} />
+                <Tab.Screen name="Hybrid" component={Hybrid} options={{ title: t("nav.topNav.hybrid") }} />
             </Tab.Navigator>
             <GlobalBottomSheet />
         </GestureHandlerRootView>
