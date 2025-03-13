@@ -11,7 +11,7 @@ import FontAwesome5 from '@expo/vector-icons/FontAwesome5';
 const windowWidth = Dimensions.get('window').width;
 
 const Index = () => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     const { User } = useAuthStore();
     const intereses = ['Arte', 'Cultura', 'Música', 'Videojuegos', 'Deportes', 'Tecnología', 'Cine', 'Fotografía'];
     return (
@@ -61,14 +61,14 @@ const Index = () => {
             </View>
 
             <View style={styles.aboutMeWrapper}>
-                <Text style={[styles.subtitle, { color: colorObject.text }]}>Sobre mí</Text>
+                <Text style={[styles.subtitle, { color: colorObject.text }]}>{t("profile.aboutMe")}</Text>
                 <Text style={[styles.aboutMeDescription, { color: colorObject.text }]}>
                     Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nobis aspernatur blanditiis labore debitis, corrupti, deleniti assumenda inventore ad, cupiditate dolorem a et sequi placeat dolorum unde repellat vitae illo! Dolorem?
                 </Text>
             </View>
 
             <View style={styles.interesesWrapper}>
-                <Text style={[styles.subtitle, { color: colorObject.text }]}>Mis intereses</Text>
+                <Text style={[styles.subtitle, { color: colorObject.text }]}>{t("profile.interests")}</Text>
                 <View style={styles.interesesContain}>
                     {intereses.map((x, i) => (
                         <LabelCategory key={i} text={x} />
@@ -77,7 +77,7 @@ const Index = () => {
             </View>
 
             <View style={styles.galeryWrapper}>
-                <Text style={[styles.subtitle, { color: colorObject.text }]}>Mi Galería</Text>
+                <Text style={[styles.subtitle, { color: colorObject.text }]}>{t("profile.gallery")}</Text>
                 <View style={styles.galeryContain}>
                     {Array.from({ length: 6 }).map((_, i) => (
                         <View key={i} style={styles.imageGalery}>
@@ -93,7 +93,7 @@ const Index = () => {
             <View style={styles.buttonWrapper}>
                 <TouchableOpacity onPress={() => router.navigate('/(app)/(profile)/settings')}>
                     <Text style={[styles.textButton, { color: colorObject.textButton, backgroundColor: colorObject.buttonBackground }]}>
-                        Editar perfil
+                    {t("profile.buttonEditProfile")}
                     </Text>
                 </TouchableOpacity>
             </View>

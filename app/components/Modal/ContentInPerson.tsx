@@ -1,11 +1,12 @@
 import { useConfiguration } from '@/hooks/useColorScheme';
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import TypeConnection from '../TypeConnection/TypeConnection';
 import TypeGender from '../TypeGender/TypeGender';
 import TotalPeople from '../TotalPeople/TotalPeople';
 import LabelCategory from '../LabelCategory/LabelCategory';
 import { router } from 'expo-router';
+import Show from '../Show/Show';
 
 interface IContentInPersonProp {
     item: IEventItem,
@@ -13,22 +14,39 @@ interface IContentInPersonProp {
 
 }
 const ContentInPerson = ({ item, showDate = false }: IContentInPersonProp) => {
-    const items = ['Regla 1', 'Regla 2', 'Regla 3', 'Regla 4'];
-
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     const subcategories = item.subcategories.length > 3 ? item.subcategories.slice(0, 3) : item.subcategories;
     return (
         <View style={{ width: '100%', alignItems: 'center' }}>
-            <View style={[styles.banner]}>
-                <View style={styles.dateContainer}>
-                                    <Text style={styles.dateText}>
-                                        {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
-                                    </Text>
-                                    <Text style={styles.dateText}>
-                                        {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
-                                    </Text>
-                                </View>
-            </View>
+            <Show>
+                <Show.When isTrue={item.banner !== "" && item.banner !== undefined && item.banner !== null}>
+                    <View style={[styles.banner]}>
+                        <Image
+                            style={{ flex: 1, width: '100%', borderRadius: 20 }}
+                            source={{ uri: item.banner }}
+                        />
+                        <Text style={styles.dateText}>
+                            {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
+                        </Text>
+                        <Text style={styles.dateText}>
+                            {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
+                        </Text>
+                    </View>
+
+                </Show.When>
+                <Show.Else>
+                    <View style={[styles.banner, { backgroundColor: 'rgba(180, 180, 180, 0.5)' }]}>
+                        <View style={styles.dateContainer}>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
+                            </Text>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
+                            </Text>
+                        </View>
+                    </View>
+                </Show.Else>
+            </Show>
             <Text style={[styles.title]}>{item.title}</Text>
             <Text style={[styles.subtitle]}>{item.owner}</Text>
             <View style={[styles.containLabels]}>
@@ -36,26 +54,26 @@ const ContentInPerson = ({ item, showDate = false }: IContentInPersonProp) => {
                 <TypeGender gender={item.gender} />
                 <TotalPeople total={item.totalPeople} />
             </View>
-            <View style={[styles.containLabels,{ columnGap: 10}]}>
+            <View style={[styles.containLabels, { columnGap: 10 }]}>
                 {subcategories.map((x, i) => (
                     <LabelCategory key={i} text={x} />
                 ))}
             </View>
             <View>
-                <Text style={[styles.titleDescription, {color: colorObject.text}]}>Introducción</Text>
-                <Text style={[{color: colorObject.text}]}>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Animi vel dolorem ut, praesentium quo impedit consequatur eligendi vitae eveniet nemo ipsa, possimus illo officiis. Explicabo officia dicta rem suscipit placeat.</Text>
+                <Text style={[styles.titleDescription, { color: colorObject.text }]}>{t("introduction")}</Text>
+                <Text style={[{ color: colorObject.text }]}>{item.description}</Text>
             </View>
             <View style={[styles.containRules]}>
-                <Text style={[styles.titleDescription, {color: colorObject.text}]}>Reglas</Text>
-                {items.map((item, index) => (
-                    <Text key={index} style={[styles.listItem, {color: colorObject.text}]}>• {item}</Text>
+                <Text style={[styles.titleDescription, { color: colorObject.text }]}>{t("rules")}</Text>
+                {item.rules.map((item, index) => (
+                    <Text key={index} style={[styles.listItem, { color: colorObject.text }]}>• {item}</Text>
                 ))}
             </View>
             <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]}>
-                <Text style={[styles.buttonText, { color: colorObject.textButton }]}>Ingresar al evento</Text>
+                <Text style={[styles.buttonText, { color: colorObject.textButton }]}>{t("modalEvent.buttonSubscribeEvent")}</Text>
             </TouchableOpacity>
             <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]} onPress={() => router.push(`/(app)/(ichat)?name=${item.title}`)}>
-                <Text style={[styles.buttonText, { color: colorObject.textButton }]}>Ver Chat</Text>
+                <Text style={[styles.buttonText, { color: colorObject.textButton }]}>{t("modalEvent.viewChat")}</Text>
             </TouchableOpacity>
         </View>
     );
@@ -65,7 +83,6 @@ const styles = StyleSheet.create({
     banner: {
         width: '100%',
         height: 172,
-        backgroundColor: 'rgba(180, 180, 180, 0.5)',
         borderRadius: 10,
         position: 'relative'
     },

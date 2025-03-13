@@ -14,7 +14,7 @@ const AppLayout = () => {
     const isOpen = useBottomSheetStore(state => state.isOpen);
     const openBottomSheet = useBottomSheetStore(state => state.openBottomSheet);
     const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     useEffect(() => {
         loadUserData();
     }, []);
@@ -23,17 +23,14 @@ const AppLayout = () => {
         return <ActivityIdicator />;
     }
 
-    console.log(User)
     if (!User) {
-        console.log(User)
-        console.log('volviendo a login')
         return <Redirect href="/sign-in" />;
     }
 
     return (
         <Tabs screenOptions={{ tabBarActiveTintColor: colorObject.tabIconSelected }} initialRouteName='(home)'  >
             <Tabs.Screen name="(home)" key={1} options={{
-                title: 'Home',
+                title: t("nav.tabNav.home"),
                 tabBarStyle: {
                     borderTopLeftRadius: 20,
                     borderTopRightRadius: 20,
@@ -47,9 +44,9 @@ const AppLayout = () => {
                 },
                 headerRight: () => (
                     <View style={styles.iconContainer}>
-                        <TouchableOpacity onPress={() => console.log("Search pressed")}>
+                        {/* <TouchableOpacity onPress={() => console.log("Search pressed")}>
                             <Ionicons name="search" size={24} color={colorObject.text} />
-                        </TouchableOpacity>
+                        </TouchableOpacity> */}
                         <TouchableOpacity onPress={() => isOpen ? closeBottomSheet() : openBottomSheet()}>
                             <SimpleLineIcons name="equalizer" size={24} color={colorObject.text} />
                         </TouchableOpacity>
@@ -68,7 +65,7 @@ const AppLayout = () => {
             
             <Tabs.Screen name='(profile)'
                 options={{
-                    title: "Profile",
+                    title: t("nav.tabNav.profile"),
                     headerShown: false,
                     tabBarIcon: ({ focused }) =><FontAwesome size={28} name="user" color={focused ? colorObject.tabIconSelected : colorObject.text} />
                 }}

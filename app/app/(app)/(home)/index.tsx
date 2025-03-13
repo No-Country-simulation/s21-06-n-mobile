@@ -10,7 +10,7 @@ import ModalComponent from '@/components/Modal/ModalComponent';
 import ContentInPerson from '@/components/Modal/ContentInPerson';
 
 const Index = () => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     const { handleLogout } = useAuth();
     const { events, selectedFilters: filterCategories, loading, loadEventsWithFilter } = useEventStore();
     const [isModalVisible, setModalVisible] = useState(false);
@@ -56,7 +56,7 @@ const Index = () => {
                     </View>
                 </Show.When>
                 <Show.Else>
-                    <View><Text style={{ color: colorObject.text }}>No hay eventos...</Text></View>
+                    <View><Text style={{ color: colorObject.text }}>{t("notFound.emptyEvents")}</Text></View>
                 </Show.Else>
             </Show>
 

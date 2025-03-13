@@ -5,11 +5,11 @@ import Ionicons from '@expo/vector-icons/Ionicons';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 const ProfileLayout = () => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     return (
         <Stack>
             <Stack.Screen name="index" options={{
-                headerShown: true, headerTitle: 'Mi Perfil',
+                headerShown: true, headerTitle: t("profile.title"),
                 headerRight: () => <View style={styles.iconContainer}>
                     <TouchableOpacity onPress={() => router.push('/settings')}>
                         <Ionicons name="settings" size={24} color={colorObject.text} />
@@ -17,7 +17,7 @@ const ProfileLayout = () => {
                 </View>
             }} />
             <Stack.Screen name="settings" options={{
-                headerShown: true, headerTitle: 'Configuración'
+                headerShown: true, headerTitle: t("settings.title")
             }} />
         </Stack>
     );

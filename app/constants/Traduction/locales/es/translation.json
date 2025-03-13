@@ -1,27 +1,137 @@
 {
-  "welcome": "¡Únete Ahora!",
-  "login": {
-      "title" : "Iniciar sesión",
-      "button" : "Iniciar sesión",
-      "description":"Haz conexiones reales sin presiones con personas que comparten tu estilo de vida. Encuentra tu tribu y vive nuevas experiencias.",
-      "labels" : {
-        "email" : "Correo electrónico",
-        "password": "Contraseña"
-      },
-      "errors": {
-          "email": {
-              "invalidEmail": "Formato de correo electrónico inválido",
-              "required": "El correo electrónico es obligatorio"
-          },
-          "password": {
-              "min": "Debe tener al menos 8 caracteres",
-              "max": "No puede tener más de 50 caracteres",
-              "required": "La contraseña es requerida",
-              "letterLower" : "La contraseña debe contener al menos una letra minúscula",
-              "letterUpper": "La contraseña debe contener al menos una letra mayúscula",
-              "letterNumeric": "La contraseña debe contener al menos un número",
-              "specialCharacter": "La contraseña debe contener al menos un carácter especial"
-          }
-      }
-  }
+    "welcome": "¡Únete Ahora!",
+    "login": {
+        "title": "Iniciar sesión",
+        "button": "Iniciar sesión",
+        "description": "Haz conexiones reales sin presiones con personas que comparten tu estilo de vida. Encuentra tu tribu y vive nuevas experiencias.",
+        "labels": {
+            "email": "Correo electrónico",
+            "password": "Contraseña"
+        },
+        "googleSignIn": "Inicia sesión con Google",
+        "errors": {
+            "email": {
+                "invalidEmail": "Formato de correo electrónico inválido",
+                "required": "El correo electrónico es obligatorio"
+            },
+            "password": {
+                "min": "Debe tener al menos 8 caracteres",
+                "max": "No puede tener más de 50 caracteres",
+                "required": "La contraseña es requerida",
+                "letterLower": "La contraseña debe contener al menos una letra minúscula",
+                "letterUpper": "La contraseña debe contener al menos una letra mayúscula",
+                "letterNumeric": "La contraseña debe contener al menos un número",
+                "specialCharacter": "La contraseña debe contener al menos un carácter especial"
+            }
+        }
+    },
+    "notFound": {
+        "emptyEvents": "No tienes eventos....."
+    },
+    "type": {
+        "location": {
+            "IN_PERSON": "Presencial",
+            "VIRTUAL": "Virtual",
+            "HYBRID": "Híbrido"
+        },
+        "gender": {
+            "M": "Masculino",
+            "F": "Femenino"
+        }
+    },
+    "nav": {
+        "topNav": {
+            "forYou": "Para Ti",
+            "agenda": "Agenda",
+            "virtual": "Virtual",
+            "inPerson": "Presencial",
+            "hybrid": "Híbrido"
+        },
+        "tabNav": {
+            "home": "Inicio",
+            "profile": "Perfil"
+        }
+    },
+    "agenda": {
+        "today": "Hoy",
+        "tomorrow": "Mañana",
+        "proxy": "Próximamente"
+    },
+    "bottomSheet": {
+        "title": "Filtros de búsqueda",
+        "ARTE": "Artes e intereses",
+        "GYM": "Deportes",
+        "SOCIAL": "Social y estilo de vida",
+        "TECHNOLOGY": "Tecnología",
+        "buttonConfirm": "Confirmar filtros",
+        "resetButton": "Reestablecer",
+        "options": {
+            "ART_1": "Arte",
+            "ART_2": "Cultura",
+            "ART_3": "Música",
+            "ART_4": "Pintura",
+            "ART_5": "Teatro",
+            "ART_6": "Actuación",
+            "ART_7": "Danza",
+            "ART_8": "Escritura",
+            "ART_9": "Poesía",
+            "ART_10": "Video juegos",
+            "GYM_1": "Fútbol",
+            "GYM_2": "Basket",
+            "GYM_3": "Tenis",
+            "GYM_4": "Yoga",
+            "GYM_5": "Running",
+            "GYM_6": "Salud",
+            "SOCIAL_1": "Comida",
+            "SOCIAL_2": "Viajes",
+            "SOCIAL_3": "Salidas",
+            "SOCIAL_4": "Cultura",
+            "SOCIAL_5": "Moda",
+            "SOCIAL_6": "Tendencias",
+            "SOCIAL_7": "Meditación",
+            "SOCIAL_8": "Bienestar",
+            "TECH_1": "Desarrollo",
+            "TECH_2": "Virtual",
+            "TECH_3": "Ciberseguridad",
+            "TECH_4": "Hacking",
+            "TECH_5": "IA",
+            "TECH_6": "Machine Learning",
+            "TECH_7": "Blockchain",
+            "TECH_8": "Criptomonedas",
+            "TECH_9": "Programación",
+            "TECH_10": "Web"
+        }
+    },
+    "introduction": "Introducción",
+    "rules": "Reglas",
+    "modalEvent": {
+        "buttonSubscribeEvent": "Ingresar al evento",
+        "viewChat": "Ver chat"
+    },
+    "profile": {
+        "title": "Mi perfil",
+        "aboutMe": "Sobre mí",
+        "interests": "Mis intereses",
+        "gallery": "Mi galería",
+        "buttonEditProfile": "Editar perfil"
+    },
+    "settings": {
+        "title": "Configuración",
+        "account": {
+            "title": "Ajustes de la cuenta",
+            "EDIT_INFO": "Editar información personal",
+            "CHANGE_PASSWORD": "Cambiar contraseña",
+            "NOTIFICATION": "Notificaciones",
+            "LANGUAGE": "Idioma",
+            "THEME": "Modo oscuro"
+        },
+        "privacy": {
+            "title": "Privacidad & configuración",
+            "PRIVACY": "Administrar la visibilidad del perfil",
+            "USER_BLOCK": "Usuarios bloqueados",
+            "PRIVACY_VIEW": "Controlar quién puede ver su información",
+            "LOGOUT": "Cerrar sesión",
+            "DELETE_ACCOUNT": "Eliminar mi cuenta"
+        }
+    }
 }

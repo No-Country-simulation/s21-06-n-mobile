@@ -21,7 +21,7 @@ interface IOption {
 
 enum OptionType {
     EDIT_INFO = 'EDIT_INFO',
-    CHANGE_PASSWORD = 'CHANGE_PASSOWORD',
+    CHANGE_PASSWORD = 'CHANGE_PASSWORD',
     NOTIFICATION = 'NOTIFICATION',
     LANGUAGE = 'LANGUAGE',
     THEME = 'THEME',
@@ -49,22 +49,22 @@ const OptionButton: React.FC<IOption> = ({ label, icon, onPress }) => {
 };
 
 const Settings = () => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     const { handleLogout } = useAuth();
     const optionAccount: IOption[] = [
-        { type: OptionType.EDIT_INFO, label: 'Editar información personal', icon: <MaterialIcons name="edit" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.CHANGE_PASSWORD, label: 'Cambiar contraseña', icon: <FontAwesome5 name="lock" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.NOTIFICATION, label: 'Notificaciones', icon: <Ionicons name="notifications-sharp" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.LANGUAGE, label: 'Idiomas', icon: <FontAwesome6 name="earth-americas" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.THEME, label: 'Modo oscuro', icon: <MaterialIcons name="dark-mode" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.EDIT_INFO, label: t("settings.account." + OptionType.EDIT_INFO.toString()), icon: <MaterialIcons name="edit" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.CHANGE_PASSWORD, label: t("settings.account." + OptionType.CHANGE_PASSWORD.toString()), icon: <FontAwesome5 name="lock" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.NOTIFICATION, label: t("settings.account." + OptionType.NOTIFICATION.toString()), icon: <Ionicons name="notifications-sharp" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.LANGUAGE, label: t("settings.account." + OptionType.LANGUAGE.toString()), icon: <FontAwesome6 name="earth-americas" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.THEME, label: t("settings.account." + OptionType.EDIT_INFO.toString()), icon: <MaterialIcons name="dark-mode" size={20} color={colorObject.text} />, onPress: undefined },
     ];
     
     const optionPrivacy: IOption[] = [
-        { type: OptionType.PRIVACY, label: 'Administrar la visibilidad del perfil', icon: <MaterialCommunityIcons name="eye" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.USER_BLOCK, label: 'Usuarios bloqueados', icon: <FontAwesome5 name="user-slash" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.PRIVACY_VIEW, label: 'Controle quién puede ver su información', icon: <Foundation name="info" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.LOGOUT, label: 'Cerrar sesión', icon: <MaterialIcons name="logout" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.DELETE_ACCOUNT, label: 'Eliminar mi cuenta', icon: <MaterialIcons name="delete" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.PRIVACY, label: t("settings.privacy." + OptionType.PRIVACY.toString()), icon: <MaterialCommunityIcons name="eye" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.USER_BLOCK, label: t("settings.privacy." + OptionType.USER_BLOCK.toString()), icon: <FontAwesome5 name="user-slash" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.PRIVACY_VIEW,label: t("settings.privacy." + OptionType.PRIVACY_VIEW.toString()), icon: <Foundation name="info" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.LOGOUT, label: t("settings.privacy." + OptionType.LOGOUT.toString()), icon: <MaterialIcons name="logout" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.DELETE_ACCOUNT, label: t("settings.privacy." + OptionType.DELETE_ACCOUNT.toString()), icon: <MaterialIcons name="delete" size={20} color={colorObject.text} />, onPress: undefined },
     ];
     
     return (
@@ -73,13 +73,13 @@ const Settings = () => {
             contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}>
             <View style={[styles.sectionWrapper]}>
-                <Text style={[styles.titleSection, { color: colorObject.text }]}>Ajustes de la cuenta</Text>
+                <Text style={[styles.titleSection, { color: colorObject.text }]}>{t("settings.account.title")}</Text>
                 {optionAccount.map((x, i) => (
                     <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} onPress={undefined} />
                 ))}
             </View>
             <View style={[styles.sectionWrapper]}>
-                <Text style={[styles.titleSection, { color: colorObject.text }]}>Privacidad & configuración</Text>
+                <Text style={[styles.titleSection, { color: colorObject.text }]}>{t("settings.privacy.title")}</Text>
                 {optionPrivacy.map((x, i) => (
                     <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} onPress={x.type === OptionType.LOGOUT ? (() => { 
                         handleLogout();

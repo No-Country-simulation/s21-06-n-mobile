@@ -1,14 +1,12 @@
 import React, { useEffect } from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 import CardChat from '@/components/Cards/CardChat';
-import { useAuth } from '@/hooks/useAuthentication';
 import { useConfiguration } from '@/hooks/useColorScheme';
 import Show from '@/components/Show/Show';
 import ActivityIdicator from '@/components/Loading/ActivityIdicator';
 import { useEventStore } from '@/store/useEventStore';
 const InPerson = () => {
-    const { colorObject } = useConfiguration();
-    const { handleLogout } = useAuth();
+    const { colorObject, t } = useConfiguration();
     const { events, selectedFilters: filterCategories, loading, loadEventsWithFilter } = useEventStore();
 
     const keyExtractor = (item: IEventItem, index: number): string => `${item.id}-${index}`;
@@ -49,7 +47,7 @@ const InPerson = () => {
                 </View>
             </Show.When>
             <Show.Else>
-                <View><Text style={{ color: colorObject.text }}>No hay eventos...</Text></View>
+                <View><Text style={{ color: colorObject.text }}>{t("notFound.emptyEvents")}</Text></View>
             </Show.Else>
         </Show>
     );

@@ -5,7 +5,7 @@ import { useAuth } from '@/hooks/useAuthentication';
 import { useConfiguration } from '@/hooks/useColorScheme';
 
 export default function GoogleLogin() {
-  const { colorObject} = useConfiguration();
+  const { colorObject, t} = useConfiguration();
   const { handleLogin } = useAuth();
 
 
@@ -48,7 +48,7 @@ export default function GoogleLogin() {
       <Image 
         source={require('../../assets/images/Google.png')}
       />
-      <Text style={[styles.textButton, {color: colorObject.textButton}]}>Sign in with Google</Text>
+      <Text style={[styles.textButton, {color: colorObject.textButton}]}>{t("login.googleSignIn")}</Text>
     </TouchableOpacity>
   );
 }

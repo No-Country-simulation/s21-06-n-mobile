@@ -1,45 +1,67 @@
 import { useConfiguration } from '@/hooks/useColorScheme';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, Text, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import Show from '../Show/Show';
 
 interface ICardAgendaProp {
     item: IEventItem
 };
 const CardAgenda = ({ item }: ICardAgendaProp) => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     const subcategories = item.subcategories.length > 3 ? item.subcategories.slice(0, 3) : item.subcategories;
     return (
         <View style={[styles.container, { backgroundColor: colorObject.cardBackground, borderColor: colorObject.text }]}>
-            <View style={styles.banner}>
-                <View style={styles.dateContainer}>
-                    <Text style={styles.dateText}>
-                        {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
-                    </Text>
-                    <Text style={styles.dateText}>
-                        {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
-                    </Text>
-                </View>
-            </View>
+            <Show>
+                <Show.When isTrue={item.banner !== "" && item.banner !== undefined && item.banner !== null}>
+                    <View style={styles.banner}>
+                        <Image
+                            style={{ flex: 1, width: '100%', borderRadius: 20 }}
+                            source={{ uri: item.banner }}
+                        />
+                        <View style={styles.dateContainer}>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
+                            </Text>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
+                            </Text>
+                        </View>
+                    </View>
+                </Show.When>
+                <Show.Else>
+                    <View style={[styles.banner, { backgroundColor: '#D9D9D9' }]}>
+                        <View style={styles.dateContainer}>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
+                            </Text>
+                            <Text style={styles.dateText}>
+                                {new Date(item.date).toLocaleString('en-US', { month: 'short' })}
+                            </Text>
+                        </View>
+                    </View>
+                </Show.Else>
+            </Show>
+
             <View style={styles.descriptionContain}>
                 <View style={styles.containTitle}>
                     <Text style={[styles.owner, { color: colorObject.text }]}>{item.owner}</Text>
                 </View>
-                <Text style={[styles.title, { color: colorObject.text }]}>{item.title}</Text>
+                <Text numberOfLines={1} style={[styles.title, { color: colorObject.text }]}>{item.title}</Text>
                 <Text style={[styles.schedule, { color: colorObject.text }]}>
-                    {new Date(item.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })} - 
+                    {new Date(item.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })} -
                     {new Date(item.date).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true })}
                 </Text>
 
                 <View style={styles.labelEvent}>
                     <View style={styles.label}>
                         <Feather name="map-pin" size={13} color={colorObject.text} />
-                        <Text style={[styles.textLabel, { color: colorObject.text }]}>{item.type}</Text>
+                        <Text style={[styles.textLabel, { color: colorObject.text }]}>{t("type.location." + item.type)}</Text>
                     </View>
                     <View style={styles.label}>
                         <MaterialCommunityIcons name="gender-female" size={15} color={colorObject.text} />
-                        <Text style={[styles.textLabel, { color: colorObject.text }]}>{item.gender}</Text>
+                        <Text style={[styles.textLabel, { color: colorObject.text }]}>{t("type.gender." + item.gender)}</Text>
                     </View>
                     <View style={styles.countPeople}>
                         <Feather name="user" size={14} color={colorObject.text} />
@@ -48,7 +70,7 @@ const CardAgenda = ({ item }: ICardAgendaProp) => {
                 </View>
                 <View style={styles.containCategory}>
                     {subcategories.map((x, i) => (
-                        <Text key={i} style={[styles.category, { color: colorObject.text, borderColor: colorObject.text }]}>{x}</Text>
+                        <Text key={i} style={[styles.category, { color: colorObject.TextLabelCategory, borderColor: colorObject.BorderLabelCategory }]}>{t("bottomSheet.options." + x)}</Text>
                     ))}
                 </View>
             </View>
@@ -60,7 +82,6 @@ const styles = StyleSheet.create({
     banner: {
         width: 130,
         height: 130,
-        backgroundColor: '#D9D9D9',
         borderRadius: 10,
         position: 'relative',
     },
@@ -95,7 +116,7 @@ const styles = StyleSheet.create({
     },
     descriptionContain: {
         height: 130,
-        paddingLeft: 7,
+        paddingHorizontal: 7,
         width: '70%'
     },
     containTitle: {
@@ -144,7 +165,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingVertical: 3,
         paddingHorizontal: 8,
-        opacity: 0.5,
         borderWidth: 1,
         borderRadius: 10
     },

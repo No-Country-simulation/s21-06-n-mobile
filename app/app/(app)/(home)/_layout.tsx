@@ -12,7 +12,7 @@ import { GestureHandlerRootView } from "react-native-gesture-handler";
 const Tab = createMaterialTopTabNavigator();
 
 export default function HomeLayout() {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
             
@@ -53,11 +53,11 @@ export default function HomeLayout() {
                 }}
 
             >
-                <Tab.Screen name="index" component={index} options={{ title: "Para Ti" }} />
-                <Tab.Screen name="Agenda" component={Agenda} options={{ title: "Agenda" }} />
-                <Tab.Screen name="Virtual" component={Virtual} options={{ title: "Virtual" }} />
-                <Tab.Screen name="InPerson" component={InPerson} options={{ title: "Presencial" }} />
-                <Tab.Screen name="Hybrid" component={Hybrid} options={{ title: "Hibrido" }} />
+                <Tab.Screen name="index" component={index} options={{ title: t("nav.topNav.forYou") }} />
+                <Tab.Screen name="Agenda" component={Agenda} options={{ title: t("nav.topNav.agenda") }} />
+                <Tab.Screen name="Virtual" component={Virtual} options={{ title: t("nav.topNav.virtual") }} />
+                <Tab.Screen name="InPerson" component={InPerson} options={{ title: t("nav.topNav.inPerson") }} />
+                <Tab.Screen name="Hybrid" component={Hybrid} options={{ title: t("nav.topNav.hybrid") }} />
             </Tab.Navigator>
             <GlobalBottomSheet />
         </GestureHandlerRootView>

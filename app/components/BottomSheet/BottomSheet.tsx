@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useMemo, useCallback } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
 import { Text, TouchableOpacity, StyleSheet, View, ScrollView, Image } from 'react-native';
 import { useBottomSheetStore } from '../../store/bottomSheetStore';
@@ -7,9 +7,10 @@ import { useEventStore } from '@/store/useEventStore';
 import ActivityIndicator from '../Loading/ActivityIdicator';
 import { useConfiguration } from '@/hooks/useColorScheme';
 import Show from '../Show/Show';
+import { useTranslation } from 'react-i18next'; // Importar el hook de traducción
 
 type Category = {
-    category: string;
+    id: string;
     type: string;
     options: string[];
 };
@@ -19,11 +20,11 @@ type CategoryIconProps = {
 };
 
 const CategoryIcon: React.FC<CategoryIconProps> = ({ type }) => {
-    const iconSource = {
+    const iconSource = useMemo(() => ({
         ARTE: require('../../assets/images/Art.png'),
         GYM: require('../../assets/images/Gym.png'),
         SOCIAL: require('../../assets/images/Pizza.png'),
-    };
+    }), []);
 
     return (
         <Image
@@ -39,6 +40,7 @@ const GlobalBottomSheet: React.FC = () => {
     const closeBottomSheet = useBottomSheetStore((state) => state.closeBottomSheet);
     const { selectedFilters, setSelectedFilters, loadEventsWithFilter } = useEventStore();
     const { colorObject } = useConfiguration();
+    const { t } = useTranslation(); // Hook de traducción
 
     useEffect(() => {
         if (isOpen) {
@@ -48,30 +50,30 @@ const GlobalBottomSheet: React.FC = () => {
         }
     }, [isOpen]);
 
-    const handleApplyFilters = () => {
+    const handleApplyFilters = useCallback(() => {
         loadEventsWithFilter(selectedFilters);
         closeBottomSheet();
-    };
+    }, [selectedFilters, loadEventsWithFilter, closeBottomSheet]);
 
-    const handleResetFilters = () => {
+    const handleResetFilters = useCallback(() => {
         setSelectedFilters([]);
         loadEventsWithFilter([]);
         closeBottomSheet();
-    };
+    }, [setSelectedFilters, loadEventsWithFilter, closeBottomSheet]);
 
-    const handleFilterToggle = (category: string, option: string) => {
+    const handleFilterToggle = useCallback((option: string) => {
         const updatedFilters = selectedFilters.includes(option)
             ? selectedFilters.filter((item) => item !== option)
             : [...selectedFilters, option];
         setSelectedFilters(updatedFilters);
-    };
+    }, [selectedFilters, setSelectedFilters]);
 
-    const renderFilterOptions = (category: string, options: string[]) => (
+    const renderFilterOptions = useCallback((options: string[]) => (
         <View style={styles.optionsContainer}>
             {options.map((option) => (
                 <TouchableOpacity
                     key={option}
-                    onPress={() => handleFilterToggle(category, option)}
+                    onPress={() => handleFilterToggle(option)}
                 >
                     <View
                         style={[
@@ -85,13 +87,13 @@ const GlobalBottomSheet: React.FC = () => {
                                 selectedFilters.includes(option) && styles.selectedText,
                             ]}
                         >
-                            {option}
+                            {t(`bottomSheet.options.${option}`)} {/* Traducción dinámica */}
                         </Text>
                     </View>
                 </TouchableOpacity>
             ))}
         </View>
-    );
+    ), [selectedFilters, handleFilterToggle, t]);
 
     if (selectedFilters === undefined) {
         return <ActivityIndicator />;
@@ -107,38 +109,40 @@ const GlobalBottomSheet: React.FC = () => {
             onClose={closeBottomSheet}
         >
             <BottomSheetView style={styles.container}>
-                <Text style={styles.headerTitle}>Filtros de búsqueda</Text>
+                <Text style={styles.headerTitle}>{t('bottomSheet.title')}</Text>
                 <ScrollView>
                     {Categories.map((item: Category) => (
-                        <View key={item.category} style={styles.categoryContainer}>
+                        <View key={item.id} style={styles.categoryContainer}>
                             <View style={styles.categoryHeader}>
                                 <Show>
                                     <Show.When isTrue={item.type === 'ARTE' || item.type === 'GYM' || item.type === 'SOCIAL'}>
                                         <CategoryIcon type={item.type} />
                                     </Show.When>
                                 </Show>
-                                <Text style={styles.categoryTitle}>{item.category}</Text>
+                                <Text style={styles.categoryTitle}>
+                                    {t(`bottomSheet.${item.type}`)} {/* Traducción dinámica */}
+                                </Text>
                             </View>
-                            {renderFilterOptions(item.category, item.options)}
+                            {renderFilterOptions(item.options)}
                         </View>
                     ))}
-                    <View style={[styles.buttonWrapper]}>
-                        <TouchableOpacity
-                            style={[styles.applyButton, { backgroundColor: colorObject.buttonBackground }]}
-                            onPress={handleApplyFilters}
-                        >
-                            <Text style={styles.applyButtonText}>Confirmar filtros</Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            style={[styles.applyButton, { backgroundColor: 'white', borderWidth: 1}]}
-                            onPress={handleResetFilters}
-                        >
-                            <Text style={[styles.applyButtonText, {color: 'black'}]}>Reestablecer</Text>
-                        </TouchableOpacity>
-                    </View>
-
                 </ScrollView>
-
+                <View style={styles.buttonWrapper}>
+                    <TouchableOpacity
+                        style={[styles.applyButton, { backgroundColor: colorObject.buttonBackground }]}
+                        onPress={handleApplyFilters}
+                    >
+                        <Text style={styles.applyButtonText}>{t('bottomSheet.buttonConfirm')}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={[styles.resetButton, { borderColor: 'black', borderWidth: 1  }]}
+                        onPress={handleResetFilters}
+                    >
+                        <Text style={[styles.resetButtonText, { color: 'black'}]}>
+                            {t('bottomSheet.resetButton')}
+                        </Text>
+                    </TouchableOpacity>
+                </View>
             </BottomSheetView>
         </BottomSheet>
     );
@@ -196,22 +200,30 @@ const styles = StyleSheet.create({
     selectedText: {
         color: '#000',
     },
-    buttonWrapper:{
+    buttonWrapper: {
         flexDirection: 'row',
-        alignItems:'center',
-        justifyContent:'space-between',
-        marginBottom: 10,
+        justifyContent: 'space-between',
         marginTop: 20,
     },
     applyButton: {
         paddingVertical: 14,
         borderRadius: 12,
         width: '48%',
-        columnGap: 10,
         alignItems: 'center',
     },
     applyButtonText: {
         color: '#fff',
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    resetButton: {
+        paddingVertical: 14,
+        borderRadius: 12,
+        width: '48%',
+        alignItems: 'center',
+        borderWidth: 1,
+    },
+    resetButtonText: {
         fontSize: 16,
         fontWeight: 'bold',
     },

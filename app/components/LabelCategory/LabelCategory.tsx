@@ -3,9 +3,9 @@ import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 
 const LabelCategory = ({ text }: { text: string }) => {
-    const { colorObject } = useConfiguration();
+    const { colorObject, t } = useConfiguration();
     return (
-        <Text style={[styles.category, { color: colorObject.TextLabelCategory, borderColor: colorObject.BorderLabelCategory }]}>{text}</Text>
+        <Text style={[styles.category, { color: colorObject.TextLabelCategory, borderColor: colorObject.BorderLabelCategory }]}>{t("bottomSheet.options." + text)}</Text>
     );
 }
 

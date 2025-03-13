@@ -1,9 +1,9 @@
 import SkeletonLoaderChat from '@/components/Loading/SkeletonLoaderChat';
 import Show from '@/components/Show/Show';
-import { MaterialIcons } from '@expo/vector-icons'
-import React, { useState, useCallback, useEffect } from 'react'
-import { Dimensions, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import { GiftedChat, IMessage, Send } from 'react-native-gifted-chat'
+import { MaterialIcons } from '@expo/vector-icons';
+import React, { useState, useCallback, useEffect } from 'react';
+import { Dimensions, StyleSheet, View } from 'react-native';
+import { GiftedChat, IMessage, Send } from 'react-native-gifted-chat';
 
 const windowWidth = Dimensions.get('window').width;
 

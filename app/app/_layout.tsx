@@ -38,7 +38,7 @@ export default function RootLayout() {
                         headerShown: false
                     }}
                 >
-                    <Stack.Screen name="sign-in" options={{ title: t("login.title") }} />
+                    <Stack.Screen name="sign-in" options={{ headerShown: false }} />
                     <Stack.Screen name="(app)" options={{ headerShown: false }} />
                 </Stack>
             </ThemeProvider>

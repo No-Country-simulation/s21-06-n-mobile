@@ -29,7 +29,6 @@ const Login = () => {
         <FormLogin />
       </View> */}
       <View style={styles.OAuthContainer}>
-        <Text>{t("login.orSingUp")}</Text>
         <View style={styles.iconsContainer}>
           <GoogleLogin />
         </View>
