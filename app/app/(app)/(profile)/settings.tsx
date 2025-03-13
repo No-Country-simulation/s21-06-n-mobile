@@ -33,21 +33,6 @@ enum OptionType {
 }
 
 
-const optionAccount: IOption[] = [
-    { type: OptionType.EDIT_INFO, label: 'Editar información personal', icon: <MaterialIcons name="edit" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.CHANGE_PASSWORD, label: 'Cambiar contraseña', icon: <FontAwesome5 name="lock" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.NOTIFICATION, label: 'Notificaciones', icon: <Ionicons name="notifications-sharp" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.LANGUAGE, label: 'Idiomas', icon: <FontAwesome6 name="earth-americas" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.THEME, label: 'Modo oscuro', icon: <MaterialIcons name="dark-mode" size={20} color="black" />, onPress: undefined },
-];
-
-const optionPrivacy: IOption[] = [
-    { type: OptionType.PRIVACY, label: 'Administrar la visibilidad del perfil', icon: <MaterialCommunityIcons name="eye" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.USER_BLOCK, label: 'Usuarios bloqueados', icon: <FontAwesome5 name="user-slash" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.PRIVACY_VIEW, label: 'Controle quién puede ver su información', icon: <Foundation name="info" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.LOGOUT, label: 'Cerrar sesión', icon: <MaterialIcons name="logout" size={20} color="black" />, onPress: undefined },
-    { type: OptionType.DELETE_ACCOUNT, label: 'Eliminar mi cuenta', icon: <MaterialIcons name="delete" size={20} color="black" />, onPress: undefined },
-];
 
 const OptionButton: React.FC<IOption> = ({ label, icon, onPress }) => {
     const { colorObject } = useConfiguration();
@@ -58,7 +43,7 @@ const OptionButton: React.FC<IOption> = ({ label, icon, onPress }) => {
                 {icon}
                 <Text style={[styles.text, { color: colorObject.text }]}>{label}</Text>
             </View>
-            <Feather name="chevron-right" size={24} color="black" />
+            <Feather name="chevron-right" size={24} color={colorObject.text} />
         </TouchableOpacity>
     );
 };
@@ -66,6 +51,22 @@ const OptionButton: React.FC<IOption> = ({ label, icon, onPress }) => {
 const Settings = () => {
     const { colorObject } = useConfiguration();
     const { handleLogout } = useAuth();
+    const optionAccount: IOption[] = [
+        { type: OptionType.EDIT_INFO, label: 'Editar información personal', icon: <MaterialIcons name="edit" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.CHANGE_PASSWORD, label: 'Cambiar contraseña', icon: <FontAwesome5 name="lock" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.NOTIFICATION, label: 'Notificaciones', icon: <Ionicons name="notifications-sharp" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.LANGUAGE, label: 'Idiomas', icon: <FontAwesome6 name="earth-americas" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.THEME, label: 'Modo oscuro', icon: <MaterialIcons name="dark-mode" size={20} color={colorObject.text} />, onPress: undefined },
+    ];
+    
+    const optionPrivacy: IOption[] = [
+        { type: OptionType.PRIVACY, label: 'Administrar la visibilidad del perfil', icon: <MaterialCommunityIcons name="eye" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.USER_BLOCK, label: 'Usuarios bloqueados', icon: <FontAwesome5 name="user-slash" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.PRIVACY_VIEW, label: 'Controle quién puede ver su información', icon: <Foundation name="info" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.LOGOUT, label: 'Cerrar sesión', icon: <MaterialIcons name="logout" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.DELETE_ACCOUNT, label: 'Eliminar mi cuenta', icon: <MaterialIcons name="delete" size={20} color={colorObject.text} />, onPress: undefined },
+    ];
+    
     return (
         <ScrollView
             style={[styles.container, { backgroundColor: colorObject.background }]}

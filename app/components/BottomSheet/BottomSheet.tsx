@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import { Text, TouchableOpacity, StyleSheet, View, FlatList } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, FlatList, Image } from 'react-native';
 import { useBottomSheetStore } from '../../store/bottomSheetStore';
 import { Categories } from '@/mock/Events';
 import { useEventStore } from '@/store/useEventStore';
 import ActivityIdicator from '../Loading/ActivityIdicator';
 import { useConfiguration } from '@/hooks/useColorScheme';
+import Show from '../Show/Show';
 
 export default function GlobalBottomSheet() {
     const bottomSheetRef = useRef<BottomSheet>(null);
@@ -87,7 +88,20 @@ export default function GlobalBottomSheet() {
                     keyExtractor={item => item.category}
                     renderItem={({ item }) => (
                         <View style={styles.filterContainer}>
-                            <Text style={styles.filterTitle}>{item.category}</Text>
+                            <View style={[styles.subtitle]}>
+                                <Show>
+                                    <Show.When isTrue={item.type === 'ARTE'}>
+                                        <Image style={{width:30, objectFit:'contain'}} source={require(`../../assets/images/Art.png`)}/>
+                                    </Show.When>
+                                    <Show.When isTrue={item.type === 'GYM'}>
+                                        <Image style={{width:30, objectFit:'contain'}} source={require(`../../assets/images/Gym.png`)}/>
+                                    </Show.When>
+                                    <Show.When isTrue={item.type === 'SOCIAL'}>
+                                        <Image style={{width:30, objectFit:'contain'}}  source={require(`../../assets/images/Pizza.png`)}/>
+                                    </Show.When>
+                                </Show>
+                                <Text style={styles.filterTitle}>{item.category}</Text>
+                            </View>
                             {renderFilterOptions(item.category, item.options)}
                         </View>
                     )}
@@ -115,8 +129,7 @@ const styles = StyleSheet.create({
     },
     filterTitle: {
         fontSize: 16,
-        fontWeight: '500',
-        marginBottom: 10,
+        fontWeight: '500'
     },
     optionsContainer: {
         flexDirection: 'row',
@@ -134,6 +147,11 @@ const styles = StyleSheet.create({
     },
     selectedOption: {
         backgroundColor: '#7F7F7F80',
+    },
+    subtitle:{
+        flexDirection:'row',
+        alignItems: 'center',
+        marginBottom: 10,
     },
     optionText: {
         fontSize: 16,
