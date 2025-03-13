@@ -5,7 +5,7 @@ import { StyleSheet, Text } from 'react-native';
 const LabelCategory = ({ text }: { text: string }) => {
     const { colorObject } = useConfiguration();
     return (
-        <Text style={[styles.category, { color: colorObject.text, borderColor: colorObject.text }]}>{text}</Text>
+        <Text style={[styles.category, { color: colorObject.TextLabelCategory, borderColor: colorObject.BorderLabelCategory }]}>{text}</Text>
     );
 }
 
@@ -17,7 +17,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         paddingVertical: 3,
         paddingHorizontal: 8,
-        opacity: 0.5,
         borderWidth: 1,
         borderRadius: 10,
     },

@@ -82,7 +82,7 @@ const Settings = () => {
                 {optionPrivacy.map((x, i) => (
                     <OptionButton label={x.label} icon={x.icon} type={x.type} key={i} onPress={x.type === OptionType.LOGOUT ? (() => { 
                         handleLogout();
-                        router.push('/sign-in') 
+                        router.replace('/sign-in') 
                     }) : undefined} />
                 ))}
             </View>

@@ -21,14 +21,15 @@ export default function GoogleLogin() {
       }
       await GoogleSignin.hasPlayServices();
       const userInfo = await GoogleSignin.signIn();
-      console.log(userInfo);
-      var e = await GoogleSignin.getTokens();
-      console.log(e.accessToken)
-      await handleLogin({
-        email : userInfo.data?.user.email ?? '',
-        password: 'Test123!'
-      })
-      
+      console.log(userInfo?.data?.user);
+     
+      if (userInfo.data?.user) {
+        var e = await GoogleSignin.getTokens();
+        console.log(e.accessToken)
+        await handleLogin(userInfo.data.user)
+      }
+     
+
     } catch (error: any) {
       if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         console.log('User cancelled the login flow');

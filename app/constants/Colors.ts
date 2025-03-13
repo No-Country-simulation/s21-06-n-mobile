@@ -21,6 +21,8 @@ export const Colors = {
     cardBackground: '#fff',
     buttonBackground: '#7B61FF',
     colorLineCategorie: '#4A90E2',
+    BorderLabelCategory: '#5D9EEA',
+    TextLabelCategory: '#5D9EEA'
   },
   dark: {
     textTitle: '#13CAD6',
@@ -36,5 +38,7 @@ export const Colors = {
     cardBackground: '#060606',
     buttonBackground: '#7B61FF',
     colorLineCategorie: '#4A90E2',
+    BorderLabelCategory: '#5D9EEA',
+    TextLabelCategory: '#5D9EEA'
   },
 };

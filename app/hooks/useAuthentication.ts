@@ -12,10 +12,9 @@ export const useAuth = () => {
         await setUser(null);
     };
 
-    const handleLogin = async (values: ILogin) => {
+    const handleLogin = async (values: IUser) => {
         console.log(values);
-        const userData = { id: '1', email: values.email };
-        await setUser(userData);
+        await setUser(values);
     };
 
     return {

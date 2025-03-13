@@ -76,7 +76,8 @@ export default function GlobalBottomSheet() {
             index={-1}
             ref={bottomSheetRef}
             snapPoints={['25%', '50%', '90%']}
-            enablePanDownToClose={true}
+            enablePanDownToClose={true}  
+            enableContentPanningGesture={false}      
             onClose={closeBottomSheet}
         >
             <BottomSheetView style={styles.contentContainer}>
