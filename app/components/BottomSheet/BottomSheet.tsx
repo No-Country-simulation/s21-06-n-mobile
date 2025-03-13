@@ -1,21 +1,44 @@
 import React, { useEffect, useRef } from 'react';
 import BottomSheet, { BottomSheetView } from '@gorhom/bottom-sheet';
-import { Text, TouchableOpacity, StyleSheet, View, FlatList, Image } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View, ScrollView, Image } from 'react-native';
 import { useBottomSheetStore } from '../../store/bottomSheetStore';
 import { Categories } from '@/mock/Events';
 import { useEventStore } from '@/store/useEventStore';
-import ActivityIdicator from '../Loading/ActivityIdicator';
+import ActivityIndicator from '../Loading/ActivityIdicator';
 import { useConfiguration } from '@/hooks/useColorScheme';
 import Show from '../Show/Show';
 
-export default function GlobalBottomSheet() {
+type Category = {
+    category: string;
+    type: string;
+    options: string[];
+};
+
+type CategoryIconProps = {
+    type: string;
+};
+
+const CategoryIcon: React.FC<CategoryIconProps> = ({ type }) => {
+    const iconSource = {
+        ARTE: require('../../assets/images/Art.png'),
+        GYM: require('../../assets/images/Gym.png'),
+        SOCIAL: require('../../assets/images/Pizza.png'),
+    };
+
+    return (
+        <Image
+            style={styles.categoryIcon}
+            source={iconSource[type as keyof typeof iconSource]}
+        />
+    );
+};
+
+const GlobalBottomSheet: React.FC = () => {
     const bottomSheetRef = useRef<BottomSheet>(null);
-    const isOpen = useBottomSheetStore(state => state.isOpen);
-    const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
-    const { selectedFilters, setSelectedFilters: setFilterCategories, loadEventsWithFilter } = useEventStore();
+    const isOpen = useBottomSheetStore((state) => state.isOpen);
+    const closeBottomSheet = useBottomSheetStore((state) => state.closeBottomSheet);
+    const { selectedFilters, setSelectedFilters, loadEventsWithFilter } = useEventStore();
     const { colorObject } = useConfiguration();
-
-
 
     useEffect(() => {
         if (isOpen) {
@@ -25,29 +48,31 @@ export default function GlobalBottomSheet() {
         }
     }, [isOpen]);
 
-
-    const applyFilters = () => {
-        loadEventsWithFilter(selectedFilters); 
-        closeBottomSheet(); 
+    const handleApplyFilters = () => {
+        loadEventsWithFilter(selectedFilters);
+        closeBottomSheet();
     };
 
-
-    const toggleFilter = (category: string, option: string) => {
-        let filter = selectedFilters;
-        if(selectedFilters.includes(option)){
-            filter = selectedFilters.filter(x => x !== option)
-        }else{
-            filter.push(option)   
-        }
-        setFilterCategories(filter)
+    const handleResetFilters = () => {
+        setSelectedFilters([]);
+        loadEventsWithFilter([]);
+        closeBottomSheet();
     };
-    
 
+    const handleFilterToggle = (category: string, option: string) => {
+        const updatedFilters = selectedFilters.includes(option)
+            ? selectedFilters.filter((item) => item !== option)
+            : [...selectedFilters, option];
+        setSelectedFilters(updatedFilters);
+    };
 
     const renderFilterOptions = (category: string, options: string[]) => (
         <View style={styles.optionsContainer}>
-            {options.map(option => (
-                <TouchableOpacity key={option} onPress={() => toggleFilter(category, option)}>
+            {options.map((option) => (
+                <TouchableOpacity
+                    key={option}
+                    onPress={() => handleFilterToggle(category, option)}
+                >
                     <View
                         style={[
                             styles.optionBox,
@@ -69,67 +94,83 @@ export default function GlobalBottomSheet() {
     );
 
     if (selectedFilters === undefined) {
-        return <ActivityIdicator />
+        return <ActivityIndicator />;
     }
 
     return (
         <BottomSheet
             index={-1}
             ref={bottomSheetRef}
-            snapPoints={['25%', '50%', '90%']}
-            enablePanDownToClose={true}  
-            enableContentPanningGesture={false}      
+            snapPoints={['50%', '90%']}
+            enablePanDownToClose={true}
+            enableContentPanningGesture={false}
             onClose={closeBottomSheet}
         >
-            <BottomSheetView style={styles.contentContainer}>
-                <Text style={styles.title}>Filtros de búsqueda</Text>
-                <FlatList
-                    data={Categories}
-                    keyExtractor={item => item.category}
-                    renderItem={({ item }) => (
-                        <View style={styles.filterContainer}>
-                            <View style={[styles.subtitle]}>
+            <BottomSheetView style={styles.container}>
+                <Text style={styles.headerTitle}>Filtros de búsqueda</Text>
+                <ScrollView>
+                    {Categories.map((item: Category) => (
+                        <View key={item.category} style={styles.categoryContainer}>
+                            <View style={styles.categoryHeader}>
                                 <Show>
-                                    <Show.When isTrue={item.type === 'ARTE'}>
-                                        <Image style={{width:30, objectFit:'contain'}} source={require(`../../assets/images/Art.png`)}/>
-                                    </Show.When>
-                                    <Show.When isTrue={item.type === 'GYM'}>
-                                        <Image style={{width:30, objectFit:'contain'}} source={require(`../../assets/images/Gym.png`)}/>
-                                    </Show.When>
-                                    <Show.When isTrue={item.type === 'SOCIAL'}>
-                                        <Image style={{width:30, objectFit:'contain'}}  source={require(`../../assets/images/Pizza.png`)}/>
+                                    <Show.When isTrue={item.type === 'ARTE' || item.type === 'GYM' || item.type === 'SOCIAL'}>
+                                        <CategoryIcon type={item.type} />
                                     </Show.When>
                                 </Show>
-                                <Text style={styles.filterTitle}>{item.category}</Text>
+                                <Text style={styles.categoryTitle}>{item.category}</Text>
                             </View>
                             {renderFilterOptions(item.category, item.options)}
                         </View>
-                    )}
-                />
-                <TouchableOpacity style={[styles.applyButton, {backgroundColor: colorObject.buttonBackground}]} onPress={applyFilters}>
-                    <Text style={styles.applyButtonText}>Confirmar filtros</Text>
-                </TouchableOpacity>
+                    ))}
+                    <View style={[styles.buttonWrapper]}>
+                        <TouchableOpacity
+                            style={[styles.applyButton, { backgroundColor: colorObject.buttonBackground }]}
+                            onPress={handleApplyFilters}
+                        >
+                            <Text style={styles.applyButtonText}>Confirmar filtros</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={[styles.applyButton, { backgroundColor: 'white', borderWidth: 1}]}
+                            onPress={handleResetFilters}
+                        >
+                            <Text style={[styles.applyButtonText, {color: 'black'}]}>Reestablecer</Text>
+                        </TouchableOpacity>
+                    </View>
+
+                </ScrollView>
+
             </BottomSheetView>
         </BottomSheet>
     );
-}
+};
 
 const styles = StyleSheet.create({
-    contentContainer: {
+    container: {
         flex: 1,
         padding: 20,
     },
-    title: {
+    headerTitle: {
         fontSize: 18,
         fontWeight: '500',
         marginBottom: 20,
     },
-    filterContainer: {
+    categoryContainer: {
         marginBottom: 20,
     },
-    filterTitle: {
+    categoryHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        marginBottom: 10,
+    },
+    categoryTitle: {
         fontSize: 16,
-        fontWeight: '500'
+        fontWeight: '500',
+        marginLeft: 10,
+    },
+    categoryIcon: {
+        width: 30,
+        height: 30,
+        resizeMode: 'contain',
     },
     optionsContainer: {
         flexDirection: 'row',
@@ -148,11 +189,6 @@ const styles = StyleSheet.create({
     selectedOption: {
         backgroundColor: '#7F7F7F80',
     },
-    subtitle:{
-        flexDirection:'row',
-        alignItems: 'center',
-        marginBottom: 10,
-    },
     optionText: {
         fontSize: 16,
         color: '#000',
@@ -160,12 +196,18 @@ const styles = StyleSheet.create({
     selectedText: {
         color: '#000',
     },
-    applyButton: {
+    buttonWrapper:{
+        flexDirection: 'row',
+        alignItems:'center',
+        justifyContent:'space-between',
+        marginBottom: 10,
         marginTop: 20,
-        backgroundColor: '#1C1B1F',
+    },
+    applyButton: {
         paddingVertical: 14,
         borderRadius: 12,
-        width: '100%',
+        width: '48%',
+        columnGap: 10,
         alignItems: 'center',
     },
     applyButtonText: {
@@ -174,3 +216,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
     },
 });
+
+export default GlobalBottomSheet;
