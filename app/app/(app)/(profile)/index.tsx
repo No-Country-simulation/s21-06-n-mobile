@@ -13,7 +13,7 @@ const windowWidth = Dimensions.get('window').width;
 const Index = () => {
     const { colorObject, t } = useConfiguration();
     const { User } = useAuthStore();
-    const intereses = ['Arte', 'Cultura', 'Música', 'Videojuegos', 'Deportes', 'Tecnología', 'Cine', 'Fotografía'];
+    const intereses = ['ART_1', 'ART_9', 'GYM_2', 'GYM_5', 'GYM_6', 'SOCIAL_2', 'SOCIAL_5', 'TECH_5'];
     return (
         <ScrollView
             style={[styles.container, { backgroundColor: colorObject.background }]}

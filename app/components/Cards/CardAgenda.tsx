@@ -4,6 +4,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import Show from '../Show/Show';
+import ImageCustom from '../Image/ImageCustom';
 
 interface ICardAgendaProp {
     item: IEventItem
@@ -16,10 +17,8 @@ const CardAgenda = ({ item }: ICardAgendaProp) => {
             <Show>
                 <Show.When isTrue={item.banner !== "" && item.banner !== undefined && item.banner !== null}>
                     <View style={styles.banner}>
-                        <Image
-                            style={{ flex: 1, width: '100%', borderRadius: 20 }}
-                            source={{ uri: item.banner }}
-                        />
+
+                        <ImageCustom  imageStyle={{flex: 1, width: '100%', borderRadius: 20}} viewStyle={styles.banner} url={item.banner} />
                         <View style={styles.dateContainer}>
                             <Text style={styles.dateText}>
                                 {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}

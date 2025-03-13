@@ -7,13 +7,15 @@ import TotalPeople from '../TotalPeople/TotalPeople';
 import LabelCategory from '../LabelCategory/LabelCategory';
 import { router } from 'expo-router';
 import Show from '../Show/Show';
+import ImageCustom from '../Image/ImageCustom';
 
 interface IContentInPersonProp {
     item: IEventItem,
-    showDate: boolean
+    showDate: boolean,
+    onClose: () => void;
 
 }
-const ContentInPerson = ({ item, showDate = false }: IContentInPersonProp) => {
+const ContentInPerson = ({ item, showDate = false, onClose }: IContentInPersonProp) => {
     const { colorObject, t } = useConfiguration();
     const subcategories = item.subcategories.length > 3 ? item.subcategories.slice(0, 3) : item.subcategories;
     return (
@@ -21,10 +23,7 @@ const ContentInPerson = ({ item, showDate = false }: IContentInPersonProp) => {
             <Show>
                 <Show.When isTrue={item.banner !== "" && item.banner !== undefined && item.banner !== null}>
                     <View style={[styles.banner]}>
-                        <Image
-                            style={{ flex: 1, width: '100%', borderRadius: 20 }}
-                            source={{ uri: item.banner }}
-                        />
+                        <ImageCustom imageStyle={{ flex: 1, width: '100%', borderRadius: 20 }} viewStyle={styles.banner} url={item.banner} />
                         <Text style={styles.dateText}>
                             {new Date(item.date).toLocaleString('en-US', { day: 'numeric' })}
                         </Text>
@@ -72,7 +71,10 @@ const ContentInPerson = ({ item, showDate = false }: IContentInPersonProp) => {
             <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]}>
                 <Text style={[styles.buttonText, { color: colorObject.textButton }]}>{t("modalEvent.buttonSubscribeEvent")}</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]} onPress={() => router.push(`/(app)/(ichat)?name=${item.title}`)}>
+            <TouchableOpacity style={[styles.button, { backgroundColor: colorObject.buttonBackground }]} onPress={() => {
+                router.push(`/(app)/(ichat)?name=${item.title}&idEvent=${item.id}`)
+                onClose()
+            }}>
                 <Text style={[styles.buttonText, { color: colorObject.textButton }]}>{t("modalEvent.viewChat")}</Text>
             </TouchableOpacity>
         </View>

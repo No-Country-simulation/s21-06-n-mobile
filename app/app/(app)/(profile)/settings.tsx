@@ -56,7 +56,7 @@ const Settings = () => {
         { type: OptionType.CHANGE_PASSWORD, label: t("settings.account." + OptionType.CHANGE_PASSWORD.toString()), icon: <FontAwesome5 name="lock" size={20} color={colorObject.text} />, onPress: undefined },
         { type: OptionType.NOTIFICATION, label: t("settings.account." + OptionType.NOTIFICATION.toString()), icon: <Ionicons name="notifications-sharp" size={20} color={colorObject.text} />, onPress: undefined },
         { type: OptionType.LANGUAGE, label: t("settings.account." + OptionType.LANGUAGE.toString()), icon: <FontAwesome6 name="earth-americas" size={20} color={colorObject.text} />, onPress: undefined },
-        { type: OptionType.THEME, label: t("settings.account." + OptionType.EDIT_INFO.toString()), icon: <MaterialIcons name="dark-mode" size={20} color={colorObject.text} />, onPress: undefined },
+        { type: OptionType.THEME, label: t("settings.account." + OptionType.THEME.toString()), icon: <MaterialIcons name="dark-mode" size={20} color={colorObject.text} />, onPress: undefined },
     ];
     
     const optionPrivacy: IOption[] = [

@@ -6,6 +6,7 @@ import TypeConnection from '../TypeConnection/TypeConnection';
 import TypeGender from '../TypeGender/TypeGender';
 import TotalPeople from '../TotalPeople/TotalPeople';
 import Show from '../Show/Show';
+import ImageCustom from '../Image/ImageCustom';
 
 interface ICardChatProp {
     item: IEventItem
@@ -27,13 +28,7 @@ const CardChat = ({ item }: ICardChatProp) => {
         <View style={[styles.container, { backgroundColor: colorObject.cardBackground, borderColor: colorObject.text }]}>
             <Show>
                 <Show.When isTrue={item.banner !== "" && item.banner !== undefined && item.banner !== null}>
-                    <View style={styles.banner}>
-                        <Image 
-                            style={{flex: 1, width: '100%', borderRadius: 20}}
-                            source={{uri: item.banner}}
-                        />
-
-                    </View>
+                    <ImageCustom  imageStyle={{flex: 1, width: '100%', borderRadius: 20}} viewStyle={styles.banner} url={item.banner} />
                 </Show.When>
                 <Show.Else>
                     <View style={[styles.banner, {backgroundColor: '#D9D9D9'}]} />

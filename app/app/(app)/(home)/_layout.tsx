@@ -15,7 +15,7 @@ export default function HomeLayout() {
     const { colorObject, t } = useConfiguration();
     return (
         <GestureHandlerRootView style={{ flex: 1 }}>
-            
+
             <Tab.Navigator
                 tabIndex={0}
                 screenOptions={{
@@ -50,6 +50,7 @@ export default function HomeLayout() {
                     tabBarItemStyle: {
                         paddingHorizontal: 0,
                     },
+                    swipeEnabled: false,
                 }}
 
             >

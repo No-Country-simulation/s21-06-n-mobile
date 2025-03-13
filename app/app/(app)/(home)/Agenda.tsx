@@ -71,9 +71,9 @@ const Agenda = () => {
                                 <Text style={[styles.sectionHeader, { color: colorObject.text }]}>{title}</Text>
                             )}
                             renderItem={({ item }) => (
-                                 <TouchableOpacity style={styles.cardWrapper} onPress={() => handleOpenModal(item)}>
+                                <TouchableOpacity style={styles.cardWrapper} onPress={() => handleOpenModal(item)}>
                                     <CardAgenda item={item} />
-                                 </TouchableOpacity>
+                                </TouchableOpacity>
                             )}
                         />
                     </View>
@@ -89,7 +89,7 @@ const Agenda = () => {
                 visible={isModalVisible}
                 onClose={() => setModalVisible(false)}
             >
-                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={true} />}
+                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={true} onClose={() => setModalVisible(false)} />}
             </ModalComponent>
         </>
 

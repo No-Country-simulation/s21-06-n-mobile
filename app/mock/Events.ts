@@ -361,7 +361,258 @@ export const Events: IEventItem[] = [
     },
 ];
 
-
+export const EventChats = [
+    {
+        eventId: '1', // ID del evento
+        messages: [
+            {
+                _id: 1,
+                text: 'Hola, ¿alguien va al concierto de Billie?',
+                createdAt: new Date(),
+                user: {
+                    _id: 2,
+                    name: 'Usuario 1',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+            {
+                _id: 2,
+                text: '¡Sí, yo voy! ¿A qué hora nos encontramos?',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '2', // ID del evento
+        messages: [
+            {
+                _id: 3,
+                text: '¿Quién juega en el partido de fútbol este domingo?',
+                createdAt: new Date(),
+                user: {
+                    _id: 3,
+                    name: 'Usuario 2',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/75.jpg',
+                },
+            },
+            {
+                _id: 4,
+                text: 'Yo juego. ¿Necesitamos más jugadores?',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '3', // ID del evento
+        messages: [
+            {
+                _id: 5,
+                text: '¿Alguien ha probado las nuevas tecnologías que vamos a discutir?',
+                createdAt: new Date(),
+                user: {
+                    _id: 4,
+                    name: 'Usuario 3',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/80.jpg',
+                },
+            },
+            {
+                _id: 6,
+                text: 'Sí, yo las he probado. Son increíbles.',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '4', // ID del evento
+        messages: [
+            {
+                _id: 7,
+                text: '¿Qué vinos vamos a probar en la cata?',
+                createdAt: new Date(),
+                user: {
+                    _id: 5,
+                    name: 'Usuario 4',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/80.jpg',
+                },
+            },
+            {
+                _id: 8,
+                text: 'Tenemos un Malbec y un Cabernet Sauvignon.',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '5', // ID del evento
+        messages: [
+            {
+                _id: 9,
+                text: '¿Qué temas vamos a improvisar en el taller?',
+                createdAt: new Date(),
+                user: {
+                    _id: 6,
+                    name: 'Usuario 5',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/85.jpg',
+                },
+            },
+            {
+                _id: 10,
+                text: 'Vamos a improvisar sobre situaciones cotidianas.',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '6', // ID del evento
+        messages: [
+            {
+                _id: 11,
+                text: '¿Quién juega en el torneo de tenis?',
+                createdAt: new Date(),
+                user: {
+                    _id: 7,
+                    name: 'Usuario 6',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/85.jpg',
+                },
+            },
+            {
+                _id: 12,
+                text: 'Yo juego. ¿A qué hora empieza?',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '7', // ID del evento
+        messages: [
+            {
+                _id: 13,
+                text: '¿Qué temas vamos a cubrir en la charla de ciberseguridad?',
+                createdAt: new Date(),
+                user: {
+                    _id: 8,
+                    name: 'Usuario 7',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/90.jpg',
+                },
+            },
+            {
+                _id: 14,
+                text: 'Vamos a hablar sobre phishing y ransomware.',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '8', // ID del evento
+        messages: [
+            {
+                _id: 15,
+                text: '¿Qué platos vamos a preparar en la experiencia gastronómica?',
+                createdAt: new Date(),
+                user: {
+                    _id: 9,
+                    name: 'Usuario 8',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/90.jpg',
+                },
+            },
+            {
+                _id: 16,
+                text: 'Vamos a preparar sushi y ramen.',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '9', // ID del evento
+        messages: [
+            {
+                _id: 17,
+                text: '¿Qué técnicas vamos a aprender en el workshop de acuarelas?',
+                createdAt: new Date(),
+                user: {
+                    _id: 10,
+                    name: 'Usuario 9',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/95.jpg',
+                },
+            },
+            {
+                _id: 18,
+                text: 'Vamos a aprender degradados y texturas.',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+    {
+        eventId: '10', // ID del evento
+        messages: [
+            {
+                _id: 19,
+                text: '¿A qué hora es la clase de yoga?',
+                createdAt: new Date(),
+                user: {
+                    _id: 11,
+                    name: 'Usuario 10',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/women/95.jpg',
+                },
+            },
+            {
+                _id: 20,
+                text: 'Es a las 7:00 AM. ¡No llegues tarde!',
+                createdAt: new Date(),
+                user: {
+                    _id: 1,
+                    name: 'Tú',
+                    avatar: 'https://randomuser.me/api/portraits/thumb/men/75.jpg',
+                },
+            },
+        ],
+    },
+];
 
 const today = new Date();
 const tomorrow = new Date(new Date().setDate(today.getDate() + 1));

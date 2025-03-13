@@ -65,7 +65,7 @@ const Index = () => {
                 visible={isModalVisible}
                 onClose={() => setModalVisible(false)}
             >
-                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={false} />}
+                {selectedEvent && <ContentInPerson item={selectedEvent} showDate={false} onClose={() => setModalVisible(false)} />}
             </ModalComponent>
 
         </>
