@@ -9,14 +9,32 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 
 ## 🤩 Nuestro Proyecto
 
-**Nombre:** AppiFriends
+**Nombre:** 
 
-**Descripción:** La app estaría dirigida a personas que desean ampliar su círculo social de manera segura y sin la presión de los encuentros uno a uno. Ideal para teletrabajadores, recién llegados a una ciudad, personas con hobbies específicos o quienes buscan actividades grupales para salir de la rutina sin la dinámica de citas.
+AppiFriends
 
-**Problematica:** Muchas personas desean ampliar su círculo social sin la presión de encuentros individuales, pero les resulta difícil encontrar comunidades afines y participar en actividades grupales de forma segura.
+**Contexto:** 
 
-**Solución:** Crear una app que conecte a personas con intereses en común mediante grupos temáticos y eventos grupales, ofreciendo un espacio seguro para socializar sin la presión de interacciones individuales.
+La app estaría dirigida para quienes buscan ampliar su círculo social de manera segura y sin la presión de citas individuales. Es ideal para:
 
+- Teletrabajadores que quieren hacer nuevas conexiones.
+- Personas recién llegadas a una ciudad que buscan integrarse.
+- Amantes de los hobbies que desean compartir actividades grupales.
+- Quienes buscan romper la rutina con eventos sociales sin la dinámica de citas.
+
+**Problemática**
+
+Muchas personas desean ampliar su círculo social sin la presión de encuentros individuales, pero les resulta difícil encontrar comunidades afines y participar en actividades grupales de forma segura.
+
+**Solución**
+
+Crear una app que conecte a personas con intereses en común mediante grupos temáticos y eventos grupales, ofreciendo un espacio seguro para socializar sin la presión de interacciones individuales.
+
+**Funciones**
+
+1. Creación de grupos por intereses (cine, senderismo, juegos de mesa, arte, etc.).
+2. Publicación de eventos grupales donde los miembros pueden unirse y confirmar asistencia.
+3. Chat del evento solo accesible para quienes confirmen participación en un evento.
 
 
 ## 🧩 Herramientas utilizadas en el proyecto
@@ -27,13 +45,18 @@ Somos un equipo multidisciplinario apasionados por crear soluciones innovadoras 
 ![Slack](https://img.shields.io/badge/Slack-%23007ACC.svg?style=for-the-badge&logo=slack&logoColor=white)
 ![GitHub](https://img.shields.io/badge/GitHub-%23007ACC.svg?style=for-the-badge&logo=github&logoColor=white)
 ![React_native](https://img.shields.io/badge/react_native-%23007ACC.svg?style=for-the-badge&logo=react&logoColor=white) 
-
+![Python](https://img.shields.io/badge/Python-%23007ACC.svg?style=for-the-badge&logo=Python&logoColor=white)
+![Postman](https://img.shields.io/badge/Postman-%23007ACC.svg?style=for-the-badge&logo=Postam&logoColor=white)
+![Excel](https://img.shields.io/badge/Microsoft_Excel-%23007ACC.svg?style=for-the-badge&logo=excel&logoColor=white)
+![Useberry](https://img.shields.io/badge/Useberry-%23007ACC.svg?style=for-the-badge&logo=useberry&logoColor=white)
+![Maze](https://img.shields.io/badge/Maze-%23007ACC.svg?style=for-the-badge&logo=maze&logoColor=white)
+![Google Meet](https://img.shields.io/badge/Google_meet-%23007ACC.svg?style=for-the-badge&logo=meet&logoColor=white)
 
 **Enlaces:**
 
 [![FIGMA](https://img.shields.io/badge/figma-9C55F7?style=for-the-badge&logo=figma&logoColor=white)](<https://www.figma.com/design/opTZeA1mcMUSNyumOxG7Db/UI-Design?node-id=440-7058&t=qFoYGaZBZW5HLRBL-1>)
 [![Notion](https://img.shields.io/badge/Notion-9C55F7?style=for-the-badge&logo=notion&logoColor=white)](<https://albbasanchez.notion.site/Equipo-s21-06-n-mobile-19f0e0304b30801189d1f5f5e5daf356?pvs=4>)
-[![aplicación](https://img.shields.io/website?url=https%3A%2F%2Fappifriends.cl&style=for-the-badge)](<https://expo.dev/accounts/exequiel65/projects/app/builds/f8c3f120-ec4e-4ac0-ab35-6417df7f6c8b>)
+[![aplicación](https://img.shields.io/website?url=https%3A%2F%2Fappifriends.cl&style=for-the-badge)](<https://expo.dev/accounts/exequiel65/projects/app/builds/f8c3f120-ec4e-4ac0-ab35-6417df7f6c8b](https://expo.dev/accounts/exequiel65/projects/app/builds/a6311776-57be-4148-a859-06fec062a8b9>)
 
 
 
