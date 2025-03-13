@@ -99,7 +99,7 @@ npm run dev  # Iniciar el cliente
     <td align="center">Marcos Exequiel <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
     <td align="center">Nayely Rodriguez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/pe.png" width="16" /></td>
     <td align="center">Alba Sanchez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
-    <td align="center">Agustin Suarez <img src=" " width="16" /></td>
+    <td align="center">Agustin Suarez <img src="https://github.com/No-Country-simulation/s21-06-n-mobile/blob/main/Diseño/ar.png" width="16" /></td>
   </tr>
   <tr>
     <td align="center">Dev Frontend</td>
@@ -117,7 +117,7 @@ npm run dev  # Iniciar el cliente
     <td align="center"><a href="https://www.linkedin.com/in/albajsanchez/">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
     </a></td>
-    <td align="center"><a href=" ">
+    <td align="center"><a href="https://www.linkedin.com/in/agustín-suárez-613b2a202/">
     	<img src="https://img.shields.io/badge/%E2%9C%A8-LinkedIn%20-0a0a0a.svg?style=flat&colorA=0a0a0a" alt="LinkedIn" />
     </a></td>
   </tr>
