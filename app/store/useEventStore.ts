@@ -3,11 +3,11 @@ import { create } from 'zustand';
 
 interface EventStore {
     events: IEventItem[];
-    filterCategories: string[];
+    selectedFilters: string[];
     loading: boolean;
     error: string | null;
     setEvents: (events: IEventItem[]) => void;
-    setFilterCategories: (filters: string[]) => void;
+    setSelectedFilters: (filters: string[]) => void;
     setLoading: (loading: boolean) => void;
     setError: (error: string | null) => void;
     loadEvents: () => void;
@@ -16,11 +16,11 @@ interface EventStore {
 
 export const useEventStore = create<EventStore>((set) => ({
     events: [],
-    filterCategories: [],
+    selectedFilters: [],
     loading: false,
     error: null,
     setEvents: (events) => set({ events }),
-    setFilterCategories: (filters) => set({ filterCategories: filters }),
+    setSelectedFilters: (filters) => set({ selectedFilters: filters }),
     setLoading: (loading) => set({ loading }),
     setError: (error) => set({ error }),
 

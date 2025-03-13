@@ -9,7 +9,7 @@ import { useEventStore } from '@/store/useEventStore';
 const InPerson = () => {
     const { colorObject } = useConfiguration();
     const { handleLogout } = useAuth();
-    const { events, filterCategories, loading, loadEventsWithFilter } = useEventStore();
+    const { events, selectedFilters: filterCategories, loading, loadEventsWithFilter } = useEventStore();
 
     const keyExtractor = (item: IEventItem, index: number): string => `${item.id}-${index}`;
 

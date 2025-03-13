@@ -12,7 +12,7 @@ import ContentInPerson from '@/components/Modal/ContentInPerson';
 const Index = () => {
     const { colorObject } = useConfiguration();
     const { handleLogout } = useAuth();
-    const { events, filterCategories, loading, loadEventsWithFilter } = useEventStore();
+    const { events, selectedFilters: filterCategories, loading, loadEventsWithFilter } = useEventStore();
     const [isModalVisible, setModalVisible] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<IEventItem | null>(null);
     const keyExtractor = (item: IEventItem, index: number): string => `${item.id}-${index}`;

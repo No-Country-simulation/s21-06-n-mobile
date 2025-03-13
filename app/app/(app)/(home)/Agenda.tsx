@@ -14,7 +14,7 @@ const Agenda = () => {
     const { handleLogout } = useAuth();
     const [section, setSection] = useState<ISection[]>([]);
     const [loadingSection, setLoadingSection] = useState<boolean>(false);
-    const { events, loading, loadEventsWithFilter, filterCategories } = useEventStore();
+    const { events, loading, loadEventsWithFilter, selectedFilters: filterCategories } = useEventStore();
     const [isModalVisible, setModalVisible] = useState(false);
     const [selectedEvent, setSelectedEvent] = useState<IEventItem | null>(null);
 

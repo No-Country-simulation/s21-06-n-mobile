@@ -12,7 +12,7 @@ export default function GlobalBottomSheet() {
     const bottomSheetRef = useRef<BottomSheet>(null);
     const isOpen = useBottomSheetStore(state => state.isOpen);
     const closeBottomSheet = useBottomSheetStore(state => state.closeBottomSheet);
-    const { filterCategories, setFilterCategories, loadEventsWithFilter } = useEventStore();
+    const { selectedFilters, setSelectedFilters: setFilterCategories, loadEventsWithFilter } = useEventStore();
     const { colorObject } = useConfiguration();
 
 
@@ -27,15 +27,15 @@ export default function GlobalBottomSheet() {
 
 
     const applyFilters = () => {
-        loadEventsWithFilter(filterCategories); 
+        loadEventsWithFilter(selectedFilters); 
         closeBottomSheet(); 
     };
 
 
     const toggleFilter = (category: string, option: string) => {
-        let filter = filterCategories;
-        if(filterCategories.includes(option)){
-            filter = filterCategories.filter(x => x !== option)
+        let filter = selectedFilters;
+        if(selectedFilters.includes(option)){
+            filter = selectedFilters.filter(x => x !== option)
         }else{
             filter.push(option)   
         }
@@ -51,13 +51,13 @@ export default function GlobalBottomSheet() {
                     <View
                         style={[
                             styles.optionBox,
-                            filterCategories.includes(option) && styles.selectedOption,
+                            selectedFilters.includes(option) && styles.selectedOption,
                         ]}
                     >
                         <Text
                             style={[
                                 styles.optionText,
-                                filterCategories.includes(option) && styles.selectedText,
+                                selectedFilters.includes(option) && styles.selectedText,
                             ]}
                         >
                             {option}
@@ -68,7 +68,7 @@ export default function GlobalBottomSheet() {
         </View>
     );
 
-    if (filterCategories === undefined) {
+    if (selectedFilters === undefined) {
         return <ActivityIdicator />
     }
 
